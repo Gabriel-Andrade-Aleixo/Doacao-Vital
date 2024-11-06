@@ -3,7 +3,8 @@
 ## Pré-requisitos
 
 Certifique-se de ter instalado os seguintes componentes em sua máquina:
-- [Node.js](https://nodejs.org/) e [npm](https://www.npmjs.com/)
+- [Node.js](https://nodejs.org/)
+- [Npm](https://www.npmjs.com/)
 - [MySQL](https://www.mysql.com/)
 
 ## Instalação
@@ -12,41 +13,46 @@ Siga os passos abaixo para instalar e rodar o projeto.
 
 1. **Clone este repositório**:
     ```bash
-    git clone <url-do-repositorio>
-    cd <nome-do-repositorio>
+    git clone https://github.com/Gabriel-Andrade-Aleixo/Doacao-Vital.git
+
+    ```
+2. **Apos clonar Entre na pasta utilizando**:
+    ```
+      cd Doacao-Vital
     ```
 
-2. **Inicialize o projeto Node.js**:
+3. **Inicialize o projeto Node.js**:
     ```bash
     npm init -y
     ```
 
-3. **Instale as dependências necessárias**:
+4. **Instale as dependências necessárias**:
     ```bash
     npm install express --save
     npm install nodemon --save
     npm install ejs
     npm install mysql2
     ```
+<hr>
+5. **Configuração do Banco de Dados MySQL:**
 
-4. **Configuração do Banco de Dados MySQL**:
+- Acesse o MySQL com o usuário `root` (ou outro usuário com permissões):
+    ```bash
+    mysql -u root -p
+    ```
+- Crie o banco de dados:
+    ```sql
+    CREATE DATABASE doacaoVital;
+    ```
+- Importe o arquivo SQL `doacaoVital.sql`:
+    ```bash
+    mysql -u root -p doacaoVital < doacaoVital.sql
+    ```
+- Verifique se o banco de dados foi criado corretamente:
+    ```sql
+    SHOW DATABASES;
+    ```
 
-    - Acesse o MySQL com o usuário `root` (ou outro usuário com permissões):
-        ```bash
-        mysql -u root -p
-        ```
-    - Crie o banco de dados:
-        ```sql
-        CREATE DATABASE doacaoVital;
-        ```
-    - Importe o arquivo SQL `doacaoVital.sql`:
-        ```bash
-        mysql -u root -p doacaoVital < doacaoVital.sql
-        ```
-    - Verifique se o banco de dados foi criado corretamente:
-        ```sql
-        SHOW DATABASES;
-        ```
 
 ## Estrutura do Projeto
 
