@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/estilos/login.css" />
+
+    <title>
+        <%= title %>
+    </title>
+
+    <style>
+        header {
+            border:solid 1px black;
+            height: 15vh;
+            background-color: chartreuse;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="row">
+            <div id="setecols" class="form-group col-md-7 col-md-offset-0">
+                <figure>
+                    <img id="logoFatec" src="./imagens/logoFatec.jpeg" alt="Logo Fatec">
+                </figure>
+            </div>
+
+            <div class="col-md-3 col-md-offset-">
+                <nav class="linkAlunos">
+                    <ul>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="blocoLogin">
+        <main>
+            <center>
+                <div class="erro">
+                    <div class="alert alert-danger">
+                        <%= mensagem %>
+                    </div>
+                </div>
+
+                <form action="/validar" method="post" class="form-login">
+                    <label>Usuário:</label>
+                    <input type="text" class="form-control" name="login" value="" />
+
+                    <label>Senha:</label>
+                    <input type="password" class="form-control" name="senha" />
+
+                    <br> <br>
+                    <input type="submit" value="Login" class="btn btn-primary btn-block">
+                </form>
+                <br>
+                <a href="/registro" class="btn btn-secondary btn-block">Cadastrar-se</a>
+            </center>
+        </main>
+    </div>
+
+
+</html>
