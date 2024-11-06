@@ -3,8 +3,10 @@
 ## Pré-requisitos
 
 Certifique-se de ter instalado os seguintes componentes em sua máquina:
-- [Node.js](https://nodejs.org/) e [npm](https://www.npmjs.com/)
-- [MySQL](https://www.mysql.com/)
+- <a href="https://nodejs.org/" target="_blank">Node.js</a>  
+- <a href="https://www.npmjs.com/" target="_blank">Npm</a>
+- <a href="https://www.mysql.com/" target="_blank">MySQL</a>
+
 
 ## Instalação
 
