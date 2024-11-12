@@ -2,7 +2,10 @@ const loginModels = require("../models/loginModels.js")
 
 module.exports = {
     login,
-    validarPSW
+    validarPSW,
+    solicitacao,
+    suporte,
+    hemocentro
 }
 
 function login(req, res) {
@@ -28,10 +31,8 @@ function validarPSW(req, res) {
         if (result.length > 0) {
             // if (result[0].usu_apelido == m_usuario && result[0].usu_password == m_senha) {
             console.log("Dados Válidos!")
-
-            res.render("index.ejs", {
-                title: "Meu PI"
-            });
+            req.session.usuario = result[0];
+            res.render("intro.ejs");
         }
         else {
             console.log("Dados Inválidos!")
@@ -43,3 +44,35 @@ function validarPSW(req, res) {
     })
 }
 
+function solicitacao(req, res) {
+    console.log("Solicitação chegou");
+
+    if (!req.session || !req.session.usuario) {
+        console.log("Usuário não autenticado");
+        return res.redirect('/');
+    }
+
+    res.render('solicitacao.ejs');
+}
+
+function suporte (req, res) {
+    console.log("Sobre chegou");
+
+    if (!req.session || !req.session.usuario) {
+        console.log("Usuário não autenticado");
+        return res.redirect('/');
+    }
+
+    res.render('suporte.ejs');
+}
+
+function hemocentro (req, res) {
+    console.log("Hemocentro chegou");
+
+    if (!req.session || !req.session.usuario) {
+        console.log("Usuário não autenticado");
+        return res.redirect('/');
+    }
+
+    res.render('emoProx.ejs');
+}
