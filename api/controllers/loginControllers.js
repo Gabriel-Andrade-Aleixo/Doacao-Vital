@@ -5,7 +5,9 @@ module.exports = {
     validarPSW,
     solicitacao,
     suporte,
-    hemocentro
+    hemocentro,
+    contaUsuario,
+    deletarUsuario
 }
 
 function login(req, res) {
@@ -75,4 +77,48 @@ function hemocentro (req, res) {
     }
 
     res.render('emoProx.ejs');
+}
+
+function contaUsuario(req, res) {
+    console.log("Conta de Usuário chegou");
+
+    if (!req.session || !req.session.usuario) {
+        console.log("Usuário não autenticado");
+        return res.redirect('/');
+    }
+
+    const usuarioCpf = req.session.usuario.cpf_user;
+    loginModels.getUsuarioById(usuarioCpf, (erro, usuario) => {
+        if (erro) {
+            console.error("Erro ao buscar o usuário:", erro);
+            return res.redirect('/');
+        }
+
+        res.render('conta.ejs', {
+            title: usuario.nome_user
+        });
+    });
+}
+
+function deletarUsuario(req, res) {
+    if (!req.session || !req.session.usuario) {
+        console.log("Usuário não autenticado");
+        return res.redirect('/');
+    }
+
+    const usuarioCpf = req.session.usuario.cpf_user;
+
+    loginModels.deletarUsuario(usuarioCpf, (erro, resultado) => {
+        if (erro) {
+            console.error("Erro ao deletar o usuário:", erro);
+            return res.redirect('/conta');
+        }
+
+        req.session.destroy((err) => {
+            if (err) {
+                console.error("Erro ao encerrar a sessão:", err);
+            }
+            res.redirect('/');
+        });
+    });
 }
