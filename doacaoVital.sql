@@ -2,64 +2,103 @@ CREATE DATABASE DoacaoVital;
 
 USE DoacaoVital;
 
--- Criando a tabela Tipo_sangue
-CREATE TABLE Tipo_sangue (
-    id_sangue INT PRIMARY KEY AUTO_INCREMENT,
-    descricao CHAR(3)
+CREATE TABLE Tipo_sangue(
+id_sangue INT PRIMARY KEY AUTO_INCREMENT,
+
+descricao CHAR(3)
 );
 
--- Criando a tabela Usuario
-CREATE TABLE Usuario (
-    id_user INT PRIMARY KEY AUTO_INCREMENT,
-    nome_user VARCHAR(70),
-    cpf_user VARCHAR(14),
-    endereco_user VARCHAR(100),
-    telefone_user VARCHAR(15),
-    id_sangue INT,
-    email_user VARCHAR(40),
-    senha_user VARCHAR(12),
-    FOREIGN KEY (id_sangue) REFERENCES Tipo_sangue(id_sangue)
+ 
+CREATE TABLE Usuario(
+id_user INT PRIMARY KEY AUTO_INCREMENT,
+
+nome_user VARCHAR(70),
+
+cpf_user VARCHAR(11),
+
+bairro_user VARCHAR(100),
+
+rua_user VARCHAR(100),
+
+numero_user VARCHAR(100),
+
+cidade_user VARCHAR(100),
+
+telefone_user VARCHAR(15),
+
+id_sangue INT,
+
+email_user VARCHAR(40),
+
+senha_user VARCHAR(12),
+
+FOREIGN KEY (id_sangue) REFERENCES Tipo_sangue(id_sangue)
 );
 
--- Criando a tabela Hemocentro
-CREATE TABLE Hemocentro (
-    id_hemocentro INT PRIMARY KEY AUTO_INCREMENT,
-    nome_hemocentro VARCHAR(20),
-    endereco_hemocentro VARCHAR(100),
-    telefone_hemocentro VARCHAR(15)
+CREATE TABLE Hemocentro(
+id_hemocentro INT PRIMARY KEY AUTO_INCREMENT,
+
+nome_hemocentro VARCHAR(20),
+
+endereco_hemocentro VARCHAR(100),
+
+telefone_hemocentro VARCHAR(15)
 );
 
--- Criando a tabela Solic_sangue
-CREATE TABLE Solic_sangue (
-    id_solic INT PRIMARY KEY AUTO_INCREMENT,
-    tipo_solic VARCHAR(12),
-    qtda_sangue INT,
-    id_usuario INT,
-    FOREIGN KEY (id_usuario) REFERENCES Usuario(id_user)
+CREATE TABLE Solic_sangue(
+id_solic INT PRIMARY KEY AUTO_INCREMENT,
+
+tipo_solic VARCHAR(12),
+
+qtda_sangue INT,
+
+id_usuario INT,
+
+FOREIGN KEY (id_usuario) REFERENCES Usuario(id_user)
 );
 
--- Criando a tabela Funcionarios
-CREATE TABLE Funcionarios (
-    id_funcionario INT PRIMARY KEY AUTO_INCREMENT,
-    nome_func VARCHAR(70),
-    cpf_func VARCHAR(14),
-    endereco_func VARCHAR(100),
-    telefone_func VARCHAR(15),
-    id_sangue INT,
-    email_func VARCHAR(40),
-    senha_func VARCHAR(12),
-    cargo VARCHAR(20),
-    data_nasc DATE,
-    id_hemocentro INT,
-    FOREIGN KEY (id_hemocentro) REFERENCES Hemocentro(id_hemocentro),
-    FOREIGN KEY (id_sangue) REFERENCES Tipo_sangue(id_sangue)
+
+
+CREATE TABLE Funcionarios(
+id_funcionario INT PRIMARY KEY AUTO_INCREMENT,
+
+nome_func VARCHAR(70),
+
+cpf_func VARCHAR(14),
+
+bairro_func VARCHAR(100),
+
+rua_func VARCHAR(100),
+
+numero_func VARCHAR(100),
+
+cidade_func VARCHAR(100),
+
+telefone_func VARCHAR(15),
+
+id_sangue INT,
+
+email_func VARCHAR(40),
+
+senha_func VARCHAR(12),
+
+cargo VARCHAR(20),
+
+data_nasc DATE,
+
+id_hemocentro INT,
+
+FOREIGN KEY (id_hemocentro) REFERENCES hemocentro(id_hemocentro),
+
+FOREIGN KEY (id_sangue) REFERENCES Tipo_sangue(id_sangue)
 );
 
--- Criando a tabela Estoque
-CREATE TABLE Estoque (
-    id_estoque INT PRIMARY KEY AUTO_INCREMENT,
-    tipo_sangue VARCHAR(3),
-    volume_deposito DOUBLE
+CREATE TABLE Estoque(
+id_estoque INT PRIMARY KEY AUTO_INCREMENT,
+
+tipo_sangue VARCHAR(3),
+
+volume_deposito DOUBLE
 );
 
 -- Inserindo dados na tabela Tipo_sangue
