@@ -1,7 +1,7 @@
 {
   "name": "backend0",
   "version": "1.0.0",
-  "description": "",
+  "description": "Certifique-se de ter instalado os seguintes componentes em sua máquina:\r - [Node.js](https://nodejs.org/)\r - [Npm](https://www.npmjs.com/)\r - [MySQL](https://www.mysql.com/)",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,9 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.10",
-    "express": "^4.19.2",
+    "express": "^4.21.1",
     "express-session": "^1.18.1",
-    "mysql2": "^3.11.3",
-    "nodemon": "^3.1.4"
-  }
+    "mysql2": "^3.11.4",
+    "nodemon": "^3.1.7"
+  },
+  "keywords": []
 }
