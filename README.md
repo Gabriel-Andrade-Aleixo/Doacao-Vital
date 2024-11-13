@@ -18,7 +18,7 @@ Siga os passos abaixo para instalar e rodar o projeto.
     ```
 2. **Apos clonar Entre na pasta utilizando**:
     ```cmd
-    cd Doacao-Vital
+    cd .\Doacao-Vital\
     ```
 
 3. **Inicialize o projeto Node.js**:
