@@ -12,7 +12,7 @@ CREATE TABLE Tipo_sangue (
 CREATE TABLE Usuario (
     id_user INT PRIMARY KEY AUTO_INCREMENT,
     nome_user VARCHAR(70),
-    cpf_user VARCHAR(14),
+    cpf_user VARCHAR(11),
     endereco_user VARCHAR(100),
     telefone_user VARCHAR(15),
     id_sangue INT,
