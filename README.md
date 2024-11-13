@@ -17,12 +17,12 @@ Siga os passos abaixo para instalar e rodar o projeto.
 
     ```
 2. **Apos clonar Entre na pasta utilizando**:
-    ```
-      cd Doacao-Vital
+    ```cmd
+    cd Doacao-Vital
     ```
 
 3. **Inicialize o projeto Node.js**:
-    ```bash
+    ```cmd
     npm init -y
     ```
 
@@ -34,7 +34,8 @@ Siga os passos abaixo para instalar e rodar o projeto.
     npm install mysql2
     ```
 <hr>
-5. **Configuração do Banco de Dados MySQL:**
+
+5. **Configuração do Banco de Dados MySQL**:
 
 - Acesse o MySQL com o usuário `root` (ou outro usuário com permissões):
     ```bash
@@ -49,39 +50,40 @@ Siga os passos abaixo para instalar e rodar o projeto.
 - Importe o arquivo SQL `doacaoVital.sql`:
     ```bash
     mysql -u root -p doacaoVital < doacaoVital.sql
+    ```
     
     Aqui está o que cada parte faz:
-
-    mysql: comando para abrir o cliente MySQL.
-    -u root: especifica o usuário que fará a conexão (neste caso, root, que geralmente é o usuário administrador).
-    -p: instrui o MySQL a solicitar a senha do usuário antes de executar o comando.
-    doacaoVital: é o nome do banco de dados onde o conteúdo do arquivo será importado. Isso significa que o banco de dados doacaoVital já deve existir no MySQL.
-    < doacaoVital.sql: usa o arquivo doacaoVital.sql como entrada, ou seja, o MySQL vai executar todos os comandos SQL presentes nesse arquivo dentro do banco de dados doacaoVital.
-    ```
+    
+    - **`mysql`**: comando para abrir o cliente MySQL.
+  
+    - **`-u root`**: especifica o usuário que fará a conexão (neste caso, root, que geralmente é o usuário administrador).
+    
+    - **`-p`**: instrui o MySQL a solicitar a senha do usuário antes de executar o comando.
+    
+    - **`doacaoVital`**: é o nome do banco de dados onde o conteúdo do arquivo será importado. Isso significa que o banco de dados doacaoVital já deve existir no MySQL.
+    
+    - **`< doacaoVital.sql`**: usa o arquivo doacaoVital.sql como entrada, ou seja, o MySQL vai executar todos os comandos SQL presentes nesse arquivo dentro do banco de dados doacaoVital.
+    
 
 - Estabeleça conexao com o  Mysql :
 
-    ```
     ° Dentro do arquivo Doacao-Vital
     ° vá para a pasta API, Entre em config
     ° Selecione  o arquivo conexao.js 
     ° faça oque esta a seguir:
-
+    
+    ```js
     var conexao = mysql.createConnection
     user: 'root', 
-    password: '123456', <- troque para a senha presente para a senha do seu mysql. 
+    password: '123456', // troque para a senha presente para a senha do seu mysql. 
     host: 'localhost',
-    port: 3306
-
-    
-
+    port: 3306 //verifique se a porta corresponde a sua, caso seja diferente, altere no código
     ```
     
     
 - Verifique se o banco de dados foi criado corretamente:
     ```sql
     SHOW DATABASES;
-    
     ```
 
 
@@ -102,12 +104,11 @@ Siga os passos abaixo para instalar e rodar o projeto.
    
 2. Acesse a aplicação no navegador em [http://localhost:3000](http://localhost:3000).
 
-3. Caso o npm start não esteja funcionado:
+3. Caso o npm start não esteja funcionado, adicione o npm start no seu package.json dessa maneira:
     ```
-    Adicione o npm start  no seu package.json dessa maneira:
-      "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon node app.js"
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon node app.js"
     },
     ```
 
