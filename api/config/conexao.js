@@ -3,7 +3,7 @@ var database = "doacaoVital";
 
 var conexao = mysql.createConnection({
     user: 'root',
-    password: 'fatec123*',
+    password: '12345*',
     host: 'localhost',
     port: 3306
 });

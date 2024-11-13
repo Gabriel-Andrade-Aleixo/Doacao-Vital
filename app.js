@@ -4,6 +4,8 @@ const app = express();
 
 const loginRoutes = require('./api/routes/loginRoutes.js');
 const registroRoutes = require('./api/routes/registroRoutes.js');
+const suporteRoutes = require('./api/routes/suporteRoutes.js'); // Rota de suporte
+
 // const index = require('./api/routes/index.js');
 
 app.use(session({
@@ -25,11 +27,17 @@ app.use(express.static('public'));
 app.use(express.static('estilos'));
 app.use(express.static('imagens'));
 app.use(express.static('js'));
+app.use(express.static('scripts'));
+
+
+
+
 
 const port = 3000;
 
 app.use("/", loginRoutes);
 app.use("/registro", registroRoutes);
+app.use("/suporte", suporteRoutes);
 
 
 //servidor rodando
