@@ -156,61 +156,80 @@ main{
 /*-------------------------------------------
   Solicitação
 ---------------------------------------------*/
+/* estilo para a seção de solicitação */
 
-main {
-    width: 90%;
-    max-width: 600px;
-    background-color: #fff;
+.solicitacao-form {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
     padding: 20px;
+    background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-}
-
-form {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-label {
+.solicitacao-form label {
     font-weight: bold;
-    margin-bottom: 8px;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #333;
 }
 
-select, button {
-    padding: 10px;
-    font-size: 1em;
+.solicitacao-form select {
+    width: 100%;
+    padding: 12px;
     margin-bottom: 20px;
     border-radius: 4px;
     border: 1px solid #ddd;
+    font-size: 1em;
 }
 
-select:focus, button:focus {
-    outline: none;
+.solicitacao-form select:focus {
     border-color: #bd5a39;
+    outline: none;
 }
 
-button {
-    background-color: #bd5a39;
+.solicitacao-form button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1em;
+    font-weight: bold;
     color: #fff;
+    background-color: #bd5a39;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+.solicitacao-form button:hover {
     background-color: #a2442d;
 }
 
+
+@media (max-width: 600px) {
+    .solicitacao-form {
+        padding: 15px;
+    }
+    .solicitacao-form label, .solicitacao-form button {
+        font-size: 1em;
+    }
+}
+
+
 /* Estilo para a Seção de Doação */
+
 .doacao-form {
     width: 100%;
-    max-width: 600px;
-    background-color: #fefefe;
+    max-width: 500px;
+    margin: 20px auto;
     padding: 20px;
+    background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
     display: flex;
     flex-direction: column;
 }
@@ -223,27 +242,33 @@ button:hover {
 
 .doacao-form label {
     font-weight: bold;
-    margin-top: 10px;
+    font-size: 1.1em;
     margin-bottom: 5px;
+    color: #333;
 }
 
-.doacao-form input, .doacao-form select, .doacao-form button {
-    padding: 10px;
-    font-size: 1em;
+.doacao-form input, .doacao-form select {
+    width: 100%;
+    padding: 12px;
     margin-bottom: 15px;
     border-radius: 4px;
     border: 1px solid #ddd;
+    font-size: 1em;
 }
 
-.doacao-form input:focus, .doacao-form select:focus, .doacao-form button:focus {
+.doacao-form input:focus, .doacao-form select:focus {
     outline: none;
     border-color: #bd5a39;
 }
 
 .doacao-form button {
-    background-color: #bd5a39;
+    padding: 12px;
+    font-size: 1.1em;
+    font-weight: bold;
     color: #fff;
+    background-color: #bd5a39;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -251,4 +276,14 @@ button:hover {
 .doacao-form button:hover {
     background-color: #a2442d;
 }
+
+@media (max-width: 600px) {
+    .doacao-form {
+        padding: 15px;
+    }
+    .doacao-form label, .doacao-form button {
+        font-size: 1em;
+    }
+}
+
 
