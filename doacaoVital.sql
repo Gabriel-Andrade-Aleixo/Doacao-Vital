@@ -9,12 +9,12 @@ CREATE TABLE Tipo_sangue (
 CREATE TABLE Usuario (
     id_user INT PRIMARY KEY AUTO_INCREMENT,
     nome_user VARCHAR(70),
-    cpf_user VARCHAR(11),
+    cpf_user VARCHAR(14),
     bairro_user VARCHAR(100),
     rua_user VARCHAR(100),
     numero_user CHAR(4),
     cidade_user VARCHAR(50),
-    telefone_user VARCHAR(15),
+    telefone_user VARCHAR(15),	
     id_sangue INT,
     email_user VARCHAR(40),
     senha_user VARCHAR(12),
@@ -39,7 +39,7 @@ CREATE TABLE Solic_sangue (
 CREATE TABLE Funcionarios (
     id_funcionario INT PRIMARY KEY AUTO_INCREMENT,
     nome_func VARCHAR(70),
-    cpf_func VARCHAR(11),
+    cpf_func VARCHAR(14),
     bairro_func VARCHAR(100),
     rua_func VARCHAR(100),
     numero_func CHAR(4),
@@ -64,12 +64,6 @@ CREATE TABLE Estoque (
 -- Inserindo dados na tabela Tipo_sangue
 INSERT INTO Tipo_sangue (descricao) VALUES ('A+'), ('A-'), ('B+'), ('B-'), ('AB+'), ('AB-'), ('O+'), ('O-');
 
--- Inserindo dados na tabela Usuario
-INSERT INTO Usuario (nome_user, cpf_user, bairro_user, rua_user, numero_user, cidade_user, telefone_user, id_sangue, email_user, senha_user) 
-VALUES 
-('João Silva', '12345678900', 'BairroA', 'RuaA', '4561', 'CidadeA', '11912345678', 1, 'joao@gmail.com', 'senha123'), 
-('Maria Santos', '98765432100', 'BairroB', 'RuaB', '4562', 'CidadeB', '11987654321', 3, 'maria@gmail.com', 'senha456');
-
 -- Inserindo dados na tabela Hemocentro
 INSERT INTO Hemocentro (nome_hemocentro, endereco_hemocentro, telefone_hemocentro) 
 VALUES 
@@ -85,8 +79,7 @@ VALUES
 -- Inserindo dados na tabela Funcionarios
 INSERT INTO Funcionarios (nome_func, cpf_func, bairro_func, rua_func, numero_func, cidade_func, telefone_func, id_sangue, email_func, senha_func, cargo, data_nasc, id_hemocentro) 
 VALUES 
-('Carlos Oliveira', '45678912300', 'BairroC', 'Rua C', '789', 'CidadeC', '1199998888', 2, 'carlos@hemocentro.com', 'senha789', 'Enfermeiro', '1985-07-15', 1),
-('Ana Paula', '78912345600', 'BairroD', 'Rua D', '101', 'CidadeD', '1188889999', 4, 'ana@hemocentro.com', 'senha101', 'Recepcionista', '1990-03-20', 2);
+('ADMIN1', '123.456.789-00', 'BA', 'RA', '1234', 'CA', '(00) 12345-6789', 1, 'ADMON@admin.com', 'admin', 'ADMIN', '1212-12-12', 1);
 
 -- Inserindo dados na tabela Estoque
 INSERT INTO Estoque (tipo_sangue, volume_deposito) 
@@ -96,3 +89,5 @@ VALUES
 
 -- Consulta para verificar dados inseridos na tabela Usuario
 SELECT * FROM Usuario;
+
+
