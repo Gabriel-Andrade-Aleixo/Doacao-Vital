@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Sim
+    </title>
+</head>
+
+<body>
+    <h1>Lista Usuários</h1>
+    <div>
+        <fieldset>
+            <legend>Registros de Usuários</legend>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome Usuário</th>
+                    <th>CPF</th>
+                    <th>Cidade</th>
+                    <th>Bairro</th>
+                    <th>Rua</th>
+                    <th>Número Casa</th>
+                    <th>Telefone</th>
+                    <th>Sangue</th>
+                    <th>Email</th>
+                </tr>
+                <% for (let i=0; i <obj_user.length; i++) { %>
+                    <tr>
+                        <td>
+                            <%= obj_user[i].id_user %>
+                        </td>
+                        <td>
+                            <%= obj_user[i].nome_user %>
+                        </td>
+                        <td>
+                            <%= obj_user[i].cpf_user %>
+                        </td>
+                        <td>
+                            <%= obj_user[i].cidade_user %>
+                        </td>
+                        <td>
+                            <%= obj_user[i].bairro_user %>
+                        </td>
+                        <td>
+                            <%= obj_user[i].rua_user %>
+                        </td>
+                        <td>
+                            <%= obj_user[i].numero_user %>
+                        </td>
+                        <td>
+                            <%= obj_user[i].telefone_user %>
+                        </td>
+                        <td>
+                            <%= obj_user[i].tipo_sangue_descricao %>
+                        </td>
+                        <td>
+                            <%= obj_user[i].email_user %>
+                        </td>
+                    </tr>
+                <% } %>
+            </table>
+        </fieldset>
+    </div>
+</body>
+
+</html>
