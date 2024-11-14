@@ -202,12 +202,53 @@ button:hover {
     background-color: #a2442d;
 }
 
-/* Responsividade */
-@media (max-width: 600px) {
-    h1 {
-        font-size: 1.5em;
-    }
-    main {
-        padding: 15px;
-    }
+/* Estilo para a Seção de Doação */
+.doacao-form {
+    width: 100%;
+    max-width: 600px;
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
 }
+
+.doacao-form h2 {
+    color: #bd5a39;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.doacao-form label {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.doacao-form input, .doacao-form select, .doacao-form button {
+    padding: 10px;
+    font-size: 1em;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.doacao-form input:focus, .doacao-form select:focus, .doacao-form button:focus {
+    outline: none;
+    border-color: #bd5a39;
+}
+
+.doacao-form button {
+    background-color: #bd5a39;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.doacao-form button:hover {
+    background-color: #a2442d;
+}
+
