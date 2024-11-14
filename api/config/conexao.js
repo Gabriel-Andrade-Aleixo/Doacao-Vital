@@ -3,7 +3,7 @@ var database = "doacaoVital";
 
 var conexao = mysql.createConnection({
     user: 'root',
-    password: '12345*',
+    password: '123456',
     host: 'localhost',
     port: 3306
 });
@@ -19,3 +19,4 @@ conexao.connect((err) => {
 });
 
 module.exports = conexao;
+

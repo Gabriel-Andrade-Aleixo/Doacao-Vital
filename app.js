@@ -31,8 +31,6 @@ app.use(express.static('scripts'));
 
 
 
-
-
 const port = 3000;
 
 app.use("/", loginRoutes);
