@@ -43,6 +43,23 @@
         </div>
     </header>
     <h1>solicitacao</h1>
+    <hr>
+    <main>
+        <form action="/solicitacao" method="POST">
+            <label for="tipoSanguineo">Tipo Sanguíneo Necessário:</label>
+            <select id="tipoSanguineo" name="tipoSanguineo">
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+            <button type="submit">Solicitar</button>
+        </form>
+    </main>
 </body>
 
 </html>
