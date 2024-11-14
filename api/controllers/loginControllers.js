@@ -20,30 +20,40 @@ function login(req, res) {
 
 
 function validarPSW(req, res) {
-    console.log("\nController Validar Login.....")
+    console.log("\nController Validar Login.....");
     const m_usuario = req.body.login;
     const m_senha = req.body.senha;
-    console.log("Usuário: " + m_usuario)
-    console.log("Senha: " + m_senha)
+    console.log("Usuário: " + m_usuario);
+    console.log("Senha: " + m_senha);
 
     loginModels.validarPSW(m_usuario, m_senha, function (erro, result) {
         if (erro) {
-            throw erro
+            console.error("Erro ao validar login:", erro);
+            return res.render("login.ejs", {
+                title: "Login",
+                mensagem: "Erro no sistema. Tente novamente mais tarde."
+            });
         }
-        if (result.length > 0) {
-            // if (result[0].usu_apelido == m_usuario && result[0].usu_password == m_senha) {
-            console.log("Dados Válidos!")
-            req.session.usuario = result[0];
-            res.render("intro.ejs");
-        }
-        else {
-            console.log("Dados Inválidos!")
+
+        if (result) {
+            console.log("Dados Válidos!");
+            console.log("O usuário é:"+ result.tipo)
+
+            req.session.usuario = result.usuario;
+
+            if (result.tipo === 'admin') {
+                res.render("introAdmin.ejs");
+            } else {
+                res.render("intro.ejs");
+            }
+        } else {
+            console.log("Dados Inválidos!");
             res.render("login.ejs", {
                 title: "Login",
-                mensagem: "Dados Invalidos"
-            })
+                mensagem: "Dados Inválidos"
+            });
         }
-    })
+    });
 }
 
 function solicitacao(req, res) {
