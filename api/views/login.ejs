@@ -18,12 +18,13 @@
 
     <style>
         header {
-            border:solid 1px black;
+            border: solid 1px black;
             height: 15vh;
             background-color: rgb(189, 90, 57);
         }
+
         body {
-        background-color: rgb(255, 255, 234);
+            background-color: rgb(255, 255, 234);
         }
     </style>
 </head>
@@ -58,9 +59,9 @@
                 </div>
 
                 <form action="/validar" method="post" class="form-login">
-                    <label>Usuário:</label>
-                    <input type="text" class="form-control" name="login" value="" />
-
+                    <label for="cpf">CPF:</label>
+                    <input type="text" id="cpf" class="form-control" name="login" maxlength="14" required
+                        oninput="formatCPF(this)" />
                     <label>Senha:</label>
                     <input type="password" class="form-control" name="senha" />
 
@@ -72,6 +73,25 @@
             </center>
         </main>
     </div>
+    <script>
+        function formatCPF(input) {
+            let value = input.value.replace(/[^0-9a-zA-Z]/g, '');
 
+            let formattedValue = '';
+
+            if (value.length <= 3) {
+                formattedValue = value;
+            } else if (value.length <= 6) {
+                formattedValue = `${value.slice(0, 3)}.${value.slice(3)}`;
+            } else if (value.length <= 9) {
+                formattedValue = `${value.slice(0, 3)}.${value.slice(3, 6)}.${value.slice(6)}`;
+            } else {
+                formattedValue = `${value.slice(0, 3)}.${value.slice(3, 6)}.${value.slice(6, 9)}-${value.slice(9, 11)}`;
+            }
+
+            input.value = formattedValue;
+        }
+    </script>
+</body>
 
 </html>
