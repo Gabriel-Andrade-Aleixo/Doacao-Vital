@@ -17,7 +17,7 @@ CREATE TABLE Usuario (
     telefone_user VARCHAR(15),
     id_sangue INT,
     email_user VARCHAR(40),
-    senha_user VARCHAR(12),
+    senha_user VARCHAR(20),
     FOREIGN KEY (id_sangue) REFERENCES Tipo_sangue(id_sangue)
 );
 
@@ -47,7 +47,7 @@ CREATE TABLE Funcionarios (
     telefone_func VARCHAR(15),
     id_sangue INT,
     email_func VARCHAR(40),
-    senha_func VARCHAR(12),
+    senha_func VARCHAR(20),
     cargo VARCHAR(20),
     data_nasc DATE,
     id_hemocentro INT,

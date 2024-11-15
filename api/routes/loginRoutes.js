@@ -16,6 +16,7 @@ function verificarAutenticacao(req, res, next) {
 router.get('/', controllerLogin.login); 
 router.post('/validar', controllerLogin.validarPSW)
 router.get('/solicitacao', verificarAutenticacao, controllerLogin.solicitacao);
+router.put('/doar', verificarAutenticacao, controllerLogin.doar);
 router.get('/suporte', verificarAutenticacao, controllerLogin.suporte);
 router.get('/emoProx', verificarAutenticacao, controllerLogin.hemocentro);
 router.get('/contaUsuario', verificarAutenticacao, controllerLogin.contaUsuario);

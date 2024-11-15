@@ -4,7 +4,8 @@ console.log("acessando models login")
 module.exports = {
     validarPSW,
     getUsuarioById,
-    deletarUsuario
+    deletarUsuario,
+    getUsuarioByCPF
 }
 
 // function validarPSW(p_login, p_senha, callback) {
@@ -33,6 +34,17 @@ function validarPSW(p_login, p_senha, callback) {
                 }
             });
         }
+    });
+}
+
+function getUsuarioByCPF(cpf_user, callback) {
+    const query = `SELECT cpf_user FROM Usuario WHERE cpf_user = "${cpf_user}"`;
+    console.log("SQL: " + query);
+    conexao.query(query, (erro, result) => {
+        if (erro) {
+            return callback(erro, null);
+        }
+        return callback(null, result[0]);
     });
 }
 

@@ -7,7 +7,8 @@ module.exports = {
     suporte,
     hemocentro,
     contaUsuario,
-    deletarUsuario
+    deletarUsuario,
+    doar
 }
 
 function login(req, res) {
@@ -64,7 +65,19 @@ function solicitacao(req, res) {
         return res.redirect('/');
     }
 
-    res.render('solicitacao.ejs');
+    // res.render('solicitacao.ejs');
+
+    const usuarioCpf = req.session.usuario.cpf_user;
+    loginModels.getUsuarioByCPF(usuarioCpf, (erro, usuario) => {
+        if (erro) {
+            console.error("Erro ao buscar usuário:", erro);
+            return res.redirect('/');
+        }
+
+        res.render('solicitacao.ejs', {
+            cpf: usuario.cpf_user
+        });
+    });
 }
 
 function suporte (req, res) {
@@ -129,6 +142,22 @@ function deletarUsuario(req, res) {
                 console.error("Erro ao encerrar a sessão:", err);
             }
             res.redirect('/');
+        });
+    });
+}
+
+function doar(req, res) {
+    console.log("Rota Doar chegou");
+
+    const usuarioCpf = req.session.usuario.cpf_user;
+    loginModels.getUsuarioById(usuarioCpf, (erro, usuario) => {
+        if (erro) {
+            console.error("Erro ao buscar usuário:", erro);
+            return res.redirect('/');
+        }
+
+        res.render('solicitacao.ejs', {
+            cpf: usuario.cpf_user
         });
     });
 }

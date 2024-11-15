@@ -21,26 +21,12 @@ function listarUsuarios(callback) {
 }
 
 function deletarUsuario(id_user, callback) {
-    const SQL = 'DELETE FROM Usuario WHERE id_user = ?';
-    conexao.query(SQL, [id_user], callback);
+    const SQLS = 'DELETE FROM Solic_sangue WHERE id_usuario = ?';
+    const SQLU = 'DELETE FROM Usuario WHERE id_user = ?';
+    conexao.query(SQLS, [id_user], (err, result) => {
+        if (err){
+            return callback (err)
+        }
+        conexao.query(SQLU, [id_user], callback);
+    });
 }
-
-// function deletarUsuario(id_user, callback) {
-//     const excluirReferenciasSQL = 'DELETE FROM solicit_sangue WHERE id_usuario = ?';
-
-//     conexao.query(excluirReferenciasSQL, [id_user], (erro) => {
-//         if (erro) {
-//             console.error("Erro ao excluir referências:", erro);
-//             return callback(erro, null);
-//         }
-
-//         const excluirUsuarioSQL = 'DELETE FROM Usuario WHERE id_user = ?';
-//         conexao.query(excluirUsuarioSQL, [id_user], (erro, resultado) => {
-//             if (erro) {
-//                 console.error("Erro na exclusão do usuário:", erro);
-//                 return callback(erro, null);
-//             }
-//             callback(null, resultado);
-//         });
-//     });
-// }
