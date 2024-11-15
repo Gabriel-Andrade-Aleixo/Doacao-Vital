@@ -10,12 +10,101 @@
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="/estilos/login.css" />
 </head>
+<style>
+    header {
+        border:solid 1px black;
+        height: 15vh;
+        background-color: rgb(189, 90, 57);
+    }
+
+    body {
+    background-color: rgb(255, 255, 234);
+    }
+
+    .carrosel-wrapper {
+        overflow-x: auto;
+        display: flex;
+        white-space: nowrap;
+        scrollbar-width: none;
+        cursor: grab;
+    } 
+
+    .carrosel-wrapper::-webkit-scrollbar {
+        display: none;
+    }
+
+    .carrosel {
+        display: flex;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .carrosel img {
+        width: 640px;
+        height: 450px;
+        flex: 0 0 auto;
+        border-radius: 5px;
+    }
+
+    @media (max-width: 600px) {
+        .container-admin {
+            padding: 15px;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+        }
+
+        .erro {
+            width: 90%;
+        }
+    }
+
+    #BaguiFei {
+    border: 2px solid #ccc;
+    padding: 20px;
+    margin: 30px auto;
+    width: 250px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+#form-container:hover {
+    transform: scale(1.05);
+}
+
+input[type="submit"] {
+    background-color: #FF5733; /* Cor de fundo suave */
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #e94e2f; /* Cor de fundo mais escura ao passar o mouse */
+    transform: translateY(-2px); /* Efeito de elevação */
+}
+
+input[type="submit"]:active {
+    background-color: #d84315; /* Cor ao clicar */
+    transform: translateY(2px); /* Efeito de pressionamento */
+}
+</style>
 
 <body>
     <header>
-        <h1>Titulo Legal</h1>
+        <h1>Area de administração</h1>
     </header>
-    <div id="" style="border: 1px solid black;">
+    
+    <div id="BaguiFei" style="border: 1px solid black;">
         <form action="/listarUsuario" method="get">
             <input type="submit" value="listarUsuario">
         </form>
