@@ -136,7 +136,7 @@ Certifique-se de que o arquivo `doacaoVital.sql` contenha as tabelas necessária
   telefone_user VARCHAR(15),
   id_sangue INT,
   email_user VARCHAR(40),
-  senha_user VARCHAR(12),
+  senha_user VARCHAR(20),
   FOREIGN KEY (id_sangue) REFERENCES Tipo_sangue(id_sangue)
   );
     
@@ -166,7 +166,7 @@ Certifique-se de que o arquivo `doacaoVital.sql` contenha as tabelas necessária
   telefone_func VARCHAR(15),
   id_sangue INT,
   email_func VARCHAR(40),
-  senha_func VARCHAR(12),
+  senha_func VARCHAR(20),
   cargo VARCHAR(20),
   data_nasc DATE,
   id_hemocentro INT,
@@ -180,3 +180,24 @@ Certifique-se de que o arquivo `doacaoVital.sql` contenha as tabelas necessária
   volume_deposito DOUBLE
   );
   ```
+Para o banco funcionar no site será necessário cadastrar algumas coisas direto no banco
+
+- Cadastre os tipos sanguíneo:
+  ```sql
+  INSERT INTO Tipo_sangue (descricao) VALUES
+  ('A+'),('A-'),
+  ('B+'),('B-'),
+  ('AB+'),('AB-'),
+  ('O+'),('O-');
+  ```
+Assim no momento que o usuário for se cadastrar, ele só poderá escolher entre algum desses tipos sanguíneos já cadastrados
+
+- Cadastre os funcionários:
+  ```sql
+  INSERT INTO Funcionarios (nome_func, cpf_func, bairro_func, rua_func, numero_func, cidade_func, telefone_func, id_sangue, email_func, senha_func, cargo, data_nasc, id_hemocentro) 
+  VALUES 
+  ('Carlos Oliveira', '45678912300', 'BairroC', 'Rua C', '789', 'CidadeC', '1199998888', 2, 'carlos@hemocentro.com', 'senha789', 'Enfermeiro', '1985-07-15', 1),
+  ('Ana Paula', '78912345600', 'BairroD', 'Rua D', '101', 'CidadeD', '1188889999', 4, 'ana@hemocentro.com', 'senha101', 'Recepcionista', '1990-03-20', 2);
+  ```
+Assim estamos cadastrando os funcionários administrado 
+  
