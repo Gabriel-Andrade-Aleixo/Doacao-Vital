@@ -9,121 +9,139 @@
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" media="screen" href="/estilos/login.css" />
+    <style>
+        header {
+            border: solid 1px black;
+            height: 15vh;
+            background-color: rgb(189, 90, 57);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            flex-wrap: wrap;
+        }
+
+        #logo {
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        body {
+            background-color: rgb(255, 255, 234);
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .carrosel-wrapper {
+            overflow-x: auto;
+            display: flex;
+            white-space: nowrap;
+            scrollbar-width: none;
+            cursor: grab;
+        }
+
+        .carrosel-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .carrosel {
+            display: flex;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .carrosel img {
+            width: 640px;
+            height: 450px;
+            flex: 0 0 auto;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                height: auto;
+                padding: 10px;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .carrosel-wrapper {
+                justify-content: flex-start;
+            }
+
+            nav ul li {
+                margin: 5px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
-<style>
-    header {
-        border:solid 1px black;
-        height: 15vh;
-        background-color: rgb(189, 90, 57);
-    }
-
-    body {
-    background-color: rgb(255, 255, 234);
-    }
-
-    .carrosel-wrapper {
-        overflow-x: auto;
-        display: flex;
-        white-space: nowrap;
-        scrollbar-width: none;
-        cursor: grab;
-    } 
-
-    .carrosel-wrapper::-webkit-scrollbar {
-        display: none;
-    }
-
-    .carrosel {
-        display: flex;
-        gap: 10px;
-        padding: 10px;
-    }
-
-    .carrosel img {
-        width: 640px;
-        height: 450px;
-        flex: 0 0 auto;
-        border-radius: 5px;
-    }
-</style>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const carrosselWrapper = document.querySelector(".carrosel-wrapper");
-        let isDragging = false;
-        let startX;
-        let scrollLeft;     
-
-        carrosselWrapper.addEventListener("mousedown", (e) => {
-            isDragging = true;
-            startX = e.pageX - carrosselWrapper.offsetLeft;
-            scrollLeft = carrosselWrapper.scrollLeft;
-            carrosselWrapper.style.cursor = 'grabbing';
-        });
-
-        carrosselWrapper.addEventListener("mouseup", () => {
-            isDragging = false;
-            carrosselWrapper.style.cursor = 'grab';
-        });
-
-        carrosselWrapper.addEventListener("mouseleave", () => {
-            isDragging = false;
-            carrosselWrapper.style.cursor = 'grab';
-        });
-
-        carrosselWrapper.addEventListener("mousemove", (e) => {
-            if (!isDragging) return;
-            e.preventDefault();
-            const x = e.pageX - carrosselWrapper.offsetLeft;
-            const walk = (x - startX) * 2;
-            carrosselWrapper.scrollLeft = scrollLeft - walk;
-        });
-    });
-</script>
 
 <body>
     <header>
-        <div class="row">
-            <div id="setecols" class="form-group col-md-7 col-md-offset-0">
-                <figure>
-                    <img id="logo" src="./imagens/Gota.png" alt="Logo Projeto do Hemocentro">
-                </figure>
-            </div>
-            <h1>Titulo Legal</h1>
-            <div class="col-md-3 col-md-offset-">
-                <nav class="linkAlunos">
-                    <ul>
-                        <li><a href="/solicitacao">Solicitações</a></li>
-                        <li><a href="/emoProx">Hemocentros</a></li>
-                        <li><a href="/suporte">Suporte</a></li>
-                        <li><a href="/contaUsuario">Conta</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+        <figure>
+            <img id="logo" src="./imagens/Gota.png" alt="Logo Projeto do Hemocentro">
+        </figure>
+        <h1>Titulo Legal</h1>
+        <nav>
+            <ul>
+                <li><a href="/solicitacao">Solicitações</a></li>
+                <li><a href="/emoProx">Hemocentros</a></li>
+                <li><a href="/suporte">Suporte</a></li>
+                <li><a href="/contaUsuario">Conta</a></li>
+            </ul>
+        </nav>
     </header>
-    <h1>Introdução</h1>
-    <section>
-        <p>Nosso objetivo é aprimorar a administração dos hemocentros, contribuindo para um sistema de saúde mais eficiente e ágil.</p>
-        <h3>Benefícios</h3>
-        <ul>
-          <li>Otimização de estoques de sangue e componentes</li>
-          <li>Facilidade no agendamento e controle de doações</li>
-          <li>Atendimento rápido e eficiente</li>
-        </ul>
-      </section>
 
-      <h2>Galeria de Hemocentro+</h2>
-      <p>Explore imagens das nossas ações, serviços e instalações</p>
-      <div class="carrosel-wrapper">
-          <section class="carrosel">
-                      <img src="./imagens/doa_basquetefranca.jpeg" alt="Doação do Franca Basquete" />
-                      <img src="./imagens/doa_exercito.jpg" alt="Ação do Exército" />
-                      <img src="./imagens/doa_geral.jpeg" alt="Pessoas Doando Sangue" />
-                      <img src="./imagens/doa_enfermagem.jpg" alt="Pessoas Doando Sangue" />
-          </section>
-      </div>
-  
+    <main class="container">
+        <h1>Introdução</h1>
+        <section>
+            <p>Nosso objetivo é aprimorar a administração dos hemocentros, contribuindo para um sistema de saúde mais eficiente e ágil.</p>
+            <h3>Benefícios</h3>
+            <ul>
+                <li>Otimização de estoques de sangue e componentes</li>
+                <li>Facilidade no agendamento e controle de doações</li>
+                <li>Atendimento rápido e eficiente</li>
+            </ul>
+        </section>
+
+        <h2>Galeria de Hemocentro</h2>
+        <p>Explore imagens das nossas ações, serviços e instalações</p>
+        <div class="carrosel-wrapper">
+            <section class="carrosel">
+                <img src="./imagens/doa_basquetefranca.jpeg" alt="Doação do Franca Basquete" />
+                <img src="./imagens/doa_exercito.jpg" alt="Ação do Exército" />
+                <img src="./imagens/doa_geral.jpeg" alt="Pessoas Doando Sangue" />
+                <img src="./imagens/doa_enfermagem.jpg" alt="Pessoas Doando Sangue" />
+            </section>
+        </div>
+    </main>
 </body>
 
 </html>
