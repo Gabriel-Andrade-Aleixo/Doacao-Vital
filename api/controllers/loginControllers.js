@@ -8,7 +8,7 @@ module.exports = {
     hemocentro,
     contaUsuario,
     deletarUsuario,
-    doar
+    doarSG
 }
 
 function login(req, res) {
@@ -146,18 +146,19 @@ function deletarUsuario(req, res) {
     });
 }
 
-function doar(req, res) {
+function doarSG(req, res) {
     console.log("Rota Doar chegou");
 
-    const usuarioCpf = req.session.usuario.cpf_user;
-    loginModels.getUsuarioById(usuarioCpf, (erro, usuario) => {
-        if (erro) {
-            console.error("Erro ao buscar usuário:", erro);
-            return res.redirect('/');
-        }
+    const m_cpf = req.body.CPFsol;
+    const m_quant = req.body.quantSG;
 
-        res.render('solicitacao.ejs', {
-            cpf: usuario.cpf_user
-        });
+    loginModels.registrarDoacao(m_cpf, m_quant, (erro, resultados) => {
+        if (erro) {
+            console.error("Erro:", erro);
+        } else {
+            console.log("Doação registrada com sucesso:", resultados);
+        }
     });
+    
+
 }

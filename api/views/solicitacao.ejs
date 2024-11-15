@@ -48,20 +48,17 @@
     <div class="blocoDoar">
         <main>
             <center>
-                <form action="/doar" method="post" class="form-login">
+                <form action="/solicitacao/<%= cpf %>" method="post" class="form-login">
                     <label for="cpf">CPF:</label>
-                    <input type="text" id="cpf" class="form-control" name="CPFsol" maxlength="14" required
-                        oninput="formatCPF(this)" value="<%= cpf %>" readonly />
-
-                    <label>Quantidade:</label>
-                    <input type="password" class="form-control" name="quantSG" />
-
+                    <input type="text" id="cpf" class="form-control" name="CPFsol" maxlength="14" value="<%= cpf %>" readonly />
+                
+                    <label>Quantidade: (Em Ml)</label>
+                    <input type="number" class="form-control" name="quantSG" min="1" max="450" required />
+                
                     <br> <br>
-                    <input type="submit" value="Login" class="btn btn-primary btn-block
-                    btn-danger">
+                    <input type="submit" value="Doar" class="btn btn-primary btn-block btn-danger">
                 </form>
                 <br>
-                <a href="/registro" class="btn btn-warning">Cadastrar-se</a>
             </center>
         </main>
     </div>
@@ -86,6 +83,12 @@
             }
 
             input.value = formattedValue;
+        }
+
+        function limitInputLength(input, maxLength) {
+            if (input.value.length > maxLength) {
+                input.value = input.value.slice(0, maxLength); // Remove o excesso
+            }
         }
     </script>
 </body>

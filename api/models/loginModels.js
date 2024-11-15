@@ -5,7 +5,9 @@ module.exports = {
     validarPSW,
     getUsuarioById,
     deletarUsuario,
+    registrarDoacao,
     getUsuarioByCPF
+
 }
 
 // function validarPSW(p_login, p_senha, callback) {
@@ -63,4 +65,45 @@ function deletarUsuario(cpf_user, callback) {
     const query = `DELETE FROM Usuario WHERE cpf_user = "${cpf_user}"`;
     console.log("SQL: " + query);
     conexao.query(query, callback);
+}
+
+function registrarDoacao(cpf, volume, callback) {
+    const subQuery = `
+        SELECT Tipo_sangue.descricao 
+        FROM Usuario
+        JOIN Tipo_sangue 
+        ON Usuario.id_sangue = Tipo_sangue.id_sangue
+        WHERE Usuario.cpf_user = ? LIMIT 1`;
+
+    console.log(`Buscando tipo sanguíneo para CPF: ${cpf}`);
+    conexao.query(subQuery, [cpf], (erro, resultadosSubQuery) => {
+        if (erro) {
+            console.error("Erro ao buscar tipo sanguíneo:", erro);
+            return callback(erro, null);
+        }
+
+        if (resultadosSubQuery.length === 0) {
+            console.error("Nenhum tipo sanguíneo encontrado para o CPF fornecido.");
+            return callback(new Error("Tipo sanguíneo não encontrado"), null);
+        }
+
+        const tipoSangue = resultadosSubQuery[0].descricao;
+        console.log(`Tipo sanguíneo encontrado: ${tipoSangue}`);
+
+        const query = `
+            UPDATE Estoque 
+            SET volume_deposito = volume_deposito + ?
+            WHERE tipo_sangue = ?`;
+
+        console.log(`Atualizando volume para tipo sanguíneo: ${tipoSangue} com volume: ${volume}`);
+        conexao.query(query, [volume, tipoSangue], (erro, resultadosUpdate) => {
+            if (erro) {
+                console.error("Erro ao atualizar o estoque:", erro);
+                return callback(erro, null);
+            }
+
+            console.log("Atualização realizada com sucesso:", resultadosUpdate);
+            callback(null, resultadosUpdate);
+        });
+    });
 }
