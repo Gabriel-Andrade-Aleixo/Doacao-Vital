@@ -57,8 +57,9 @@ CREATE TABLE Funcionarios (
 
 CREATE TABLE Estoque (
     id_estoque INT PRIMARY KEY AUTO_INCREMENT,
-    tipo_sangue VARCHAR(3),
+    tipo_sangue INT,
     volume_deposito DOUBLE
+    FOREIGN KEY (tipo_sangue) REFERENCES Tipo_sangue(id_sangue)
 );
 
 -- Inserindo dados na tabela Tipo_sangue
