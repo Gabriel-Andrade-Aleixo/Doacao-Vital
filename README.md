@@ -196,8 +196,22 @@ Assim no momento que o usuário for se cadastrar, ele só poderá escolher entre
   ```sql
   INSERT INTO Funcionarios (nome_func, cpf_func, bairro_func, rua_func, numero_func, cidade_func, telefone_func, id_sangue, email_func, senha_func, cargo, data_nasc, id_hemocentro) 
   VALUES 
-  ('Carlos Oliveira', '45678912300', 'BairroC', 'Rua C', '789', 'CidadeC', '1199998888', 2, 'carlos@hemocentro.com', 'senha789', 'Enfermeiro', '1985-07-15', 1),
-  ('Ana Paula', '78912345600', 'BairroD', 'Rua D', '101', 'CidadeD', '1188889999', 4, 'ana@hemocentro.com', 'senha101', 'Recepcionista', '1990-03-20', 2);
+  ('ADMIN1', '123.456.789-00', 'BA', 'RA', '1234', 'CA', '(00) 12345-6789', 1, 'ADMON@admin.com', 'admin', 'ADMIN', '1212-12-12', 1);
   ```
-Assim estamos cadastrando os funcionários administrado 
+Assim estamos cadastrando o admininstrador para ele poder cadastrar os funcionários
+
+- Cadastre o Estoque:
+  ```sql
+  INSERT INTO Estoque (tipo_sangue, volume_deposito) 
+  VALUES 
+  ('A+', 450.0), 
+  ('A-', 450.0), 
+  ('B+', 450.0), 
+  ('B-', 450.0), 
+  ('AB+', 450.0), 
+  ('AB-', 450.0), 
+  ('O+', 450.0), 
+  ('O-', 450.0);
+  ```
+Por fim cadastramos a quantidade de sangue em estoque
 
