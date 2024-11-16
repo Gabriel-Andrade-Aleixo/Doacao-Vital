@@ -13,9 +13,31 @@
 </head>
 <style>
     header {
-        border: solid 1px black;
-        height: 15vh;
         background-color: rgb(189, 90, 57);
+        padding: 5px;
+        color: white;
+        text-align: center;
+        width: 100%;
+    }
+
+    header img {
+        height: 100px;
+    }
+ 
+    .navbar {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 1.1rem;
+    }
+
+    .navbar a:hover {
+        color: #ffcccb;
     }
 
     body {
@@ -25,24 +47,17 @@
 
 <body>
     <header>
-        <div class="row">
-            <div id="setecols" class="form-group col-md-7 col-md-offset-0">
-                <figure>
-                    <img id="logo" src="./imagens/Gota.png" alt="Logo Projeto do Hemocentro">
-                </figure>
-            </div>
-            <h1>Titulo Legal</h1>
-            <div class="col-md-3 col-md-offset-">
-                <nav class="linkAlunos">
-                    <ul>
-                        <li><a href="/solicitacao">Solicitações</a></li>
-                        <li><a href="/emoProx">Hemocentros</a></li>
-                        <li><a href="/suporte">Suporte</a></li>
-                        <li><a href="/contaUsuario">Conta</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+        <figure>
+            <img id="logo" src="./imagens/Gota.png" alt="Logo Projeto do Hemocentro">
+        </figure>
+        <a href="/intro.ejs"><h1 id="h1-site">Doação Vital</h1></a>
+        
+        <nav class="navbar">
+            <a href="/solicitacao">Solicitações</a>
+            <a href="/emoProx">Hemocentros</a>
+            <a href="/suporte">Suporte</a>
+            <a href="/contaUsuario">Conta</a>
+        </nav>
     </header>
 
     <main>

@@ -12,35 +12,31 @@
     <link rel="icon" type="image/x-icon" href="imagens/logofav.ico">
     <style>
         header {
-            border: solid 1px black;
-            height: 15vh;
             background-color: rgb(189, 90, 57);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 10px;
-            flex-wrap: wrap;
-        }
-
-        #logo {
-            max-height: 100%;
-            max-width: 100%;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        nav ul li {
-            margin: 0 10px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
+            padding: 5px;
             color: white;
+            text-align: center;
+            width: 100%;
+        }
+
+        header img {
+            height: 100px;
+        }
+ 
+        .navbar {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1rem;
+        }
+
+        .navbar a:hover {
+            color: #ffcccb;
         }
 
         body {
@@ -59,11 +55,25 @@
         }
 
         .bg-body{
-            border: 2px solid rgb(189, 90, 57);
-            box-shadow: 10px 5px 5px rgb(179, 158, 158);
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: rgb(189, 90, 57);
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -73,15 +83,13 @@
         <figure>
             <img id="logo" src="./imagens/Gota.png" alt="Logo Projeto do Hemocentro">
         </figure>
-        <h2 id="CorTt">Doação  Vital <hr></h2>
+        <h1>Doação Vital</h1>
         
-        <nav>
-            <ul>
-                <li><a href="/solicitacao">Solicitações</a></li>
-                <li><a href="/emoProx">Hemocentros</a></li>
-                <li><a href="/suporte">Suporte</a></li>
-                <li><a href="/contaUsuario">Conta</a></li>
-            </ul>
+        <nav class="navbar">
+            <a href="/solicitacao">Solicitações</a>
+            <a href="/emoProx">Hemocentros</a>
+            <a href="/suporte">Suporte</a>
+            <a href="/contaUsuario">Conta</a>
         </nav>
     </header>
 
@@ -108,6 +116,11 @@
             </section>
         </main>
     </div>
+    <br>
+    <hr>
+    <footer>
+        © 2024 Doação Vital | <a href="https://site.fatecfranca.edu.br/">Powered by Fatec Franca</a>
+    </footer>
 </body>
 
 </html>
