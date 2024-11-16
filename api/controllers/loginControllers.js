@@ -8,7 +8,8 @@ module.exports = {
     hemocentro,
     contaUsuario,
     deletarUsuario,
-    doarSG
+    doarSG,
+    solicitarSG
 }
 
 function login(req, res) {
@@ -38,7 +39,7 @@ function validarPSW(req, res) {
 
         if (result) {
             console.log("Dados Válidos!");
-            console.log("O usuário é:"+ result.tipo)
+            console.log("O usuário é:" + result.tipo)
 
             req.session.usuario = result.usuario;
 
@@ -75,12 +76,13 @@ function solicitacao(req, res) {
         }
 
         res.render('solicitacao.ejs', {
-            cpf: usuario.cpf_user
+            cpf: usuario.cpf_user,
+            mensagem: "Doar ou receber"
         });
     });
 }
 
-function suporte (req, res) {
+function suporte(req, res) {
     console.log("Sobre chegou");
 
     if (!req.session || !req.session.usuario) {
@@ -91,7 +93,7 @@ function suporte (req, res) {
     res.render('suporte.ejs');
 }
 
-function hemocentro (req, res) {
+function hemocentro(req, res) {
     console.log("Hemocentro chegou");
 
     if (!req.session || !req.session.usuario) {
@@ -155,10 +157,36 @@ function doarSG(req, res) {
     loginModels.registrarDoacao(m_cpf, m_quant, (erro, resultados) => {
         if (erro) {
             console.error("Erro:", erro);
+            return res.render('solicitacao.ejs', {
+                mensagem: "Erro ao registrar a doação"
+            });
         } else {
             console.log("Doação registrada com sucesso:", resultados);
+
+            res.render('solicitacao.ejs', {
+                cpf: req.session.usuario.cpf_user,
+                mensagem: "Doação registrada com sucesso"
+            });
         }
     });
-    
+}
+
+function solicitarSG(req, res) {
+    console.log("Rota Doar chegou");
+
+    const m_cpf = req.body.CPFsol;
+    const m_quant = req.body.quantSG;
+
+    loginModels.registrarSolicitacao(m_cpf, m_quant, (erro, resultados) => {
+        if (erro) {
+            console.error("Erro:", erro);
+        } else {
+            console.log("Solicitação registrada com sucesso:", resultados);
+            res.render('solicitacao.ejs', {
+                cpf: req.session.usuario.cpf_user,
+                mensagem: "Solicitado"
+            })
+        }
+    });
 
 }

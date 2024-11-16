@@ -6,8 +6,8 @@ module.exports = {
     getUsuarioById,
     deletarUsuario,
     registrarDoacao,
-    getUsuarioByCPF
-
+    getUsuarioByCPF,
+    registrarSolicitacao
 }
 
 // function validarPSW(p_login, p_senha, callback) {
@@ -104,6 +104,61 @@ function registrarDoacao(cpf, volume, callback) {
 
             console.log("Atualização realizada com sucesso:", resultadosUpdate);
             callback(null, resultadosUpdate);
+        });
+    });
+}
+
+function registrarSolicitacao(cpf, volume, callback) {
+    const subQuery = `
+        SELECT Usuario.id_user, Tipo_sangue.descricao 
+        FROM Usuario
+        JOIN Tipo_sangue 
+        ON Usuario.id_sangue = Tipo_sangue.id_sangue
+        WHERE Usuario.cpf_user = ? LIMIT 1`;
+
+    console.log(`Buscando informações para CPF: ${cpf}`);
+    conexao.query(subQuery, [cpf], (erro, resultadosSubQuery) => {
+        if (erro) {
+            console.error("Erro ao buscar informações do usuário:", erro);
+            return callback(erro, null);
+        }
+
+        if (resultadosSubQuery.length === 0) {
+            console.error("Usuário não encontrado para o CPF fornecido.");
+            return callback(new Error("Usuário não encontrado"), null);
+        }
+
+        const { id_user, descricao: tipoSangue } = resultadosSubQuery[0];
+        console.log(`Usuário encontrado: ID=${id_user}, Tipo Sanguíneo=${tipoSangue}`);
+
+        const updateQuery = `
+            UPDATE Estoque 
+            SET volume_deposito = volume_deposito - ?
+            WHERE tipo_sangue = ?`;
+
+        console.log(`Atualizando estoque para tipo sanguíneo: ${tipoSangue} com volume: ${volume}`);
+        conexao.query(updateQuery, [volume, tipoSangue], (erro, resultadosUpdate) => {
+            if (erro) {
+                console.error("Erro ao atualizar o estoque:", erro);
+                return callback(erro, null);
+            }
+
+            console.log("Estoque atualizado com sucesso:", resultadosUpdate);
+
+            const insertQuery = `
+                INSERT INTO Solic_sangue (tipo_solic, qtda_sangue, id_usuario)
+                VALUES (?, ?, ?)`;
+
+            console.log(`Registrando solicitação: Tipo=${tipoSangue}, Volume=${volume}, ID Usuário=${id_user}`);
+            conexao.query(insertQuery, [tipoSangue, volume, id_user], (erro, resultadosInsert) => {
+                if (erro) {
+                    console.error("Erro ao registrar a solicitação:", erro);
+                    return callback(erro, null);
+                }
+
+                console.log("Solicitação registrada com sucesso:", resultadosInsert);
+                callback(null, resultadosInsert);
+            });
         });
     });
 }

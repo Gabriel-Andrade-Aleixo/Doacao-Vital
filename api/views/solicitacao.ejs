@@ -44,17 +44,28 @@
         </div>
     </header>
 
+    <main>
+        <center>
+            <div class="erro">
+                <div class="alert alert-warning">
+                    <%= mensagem %>
+                </div>
+            </div>
+        </center>
+    </main>
+
     <h1>DOAR</h1>
     <div class="blocoDoar">
         <main>
             <center>
                 <form action="/solicitacao/<%= cpf %>" method="post" class="form-login">
                     <label for="cpf">CPF:</label>
-                    <input type="text" id="cpf" class="form-control" name="CPFsol" maxlength="14" value="<%= cpf %>" readonly />
-                
+                    <input type="text" id="cpf" class="form-control" name="CPFsol" maxlength="14" value="<%= cpf %>"
+                        readonly />
+
                     <label>Quantidade: (Em Ml)</label>
                     <input type="number" class="form-control" name="quantSG" min="1" max="450" required />
-                
+
                     <br> <br>
                     <input type="submit" value="Doar" class="btn btn-primary btn-block btn-danger">
                 </form>
@@ -64,6 +75,22 @@
     </div>
 
     <h1>SOLICITAR</h1>
+    <main>
+        <center>
+            <form action="/solcitacao/<%= cpf %>" method="post" class="form-login">
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" class="form-control" name="CPFsol" maxlength="14" value="<%= cpf %>"
+                    readonly />
+
+                <label>Quantidade: (Em Ml)</label>
+                <input type="number" class="form-control" name="quantSG" min="1" max="5000" required />
+
+                <br> <br>
+                <input type="submit" value="Solicitar" class="btn btn-primary btn-block btn-danger">
+            </form>
+            <br>
+        </center>
+    </main>
 
 
     <script>
@@ -90,6 +117,8 @@
                 input.value = input.value.slice(0, maxLength); // Remove o excesso
             }
         }
+
+
     </script>
 </body>
 

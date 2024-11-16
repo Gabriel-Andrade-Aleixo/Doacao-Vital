@@ -13,6 +13,25 @@ function verificarAutenticacao(req, res, next) {
     }
 }
 
+// function verificarAdmin(req, res, next) {
+//     req.session.usuario = result.usuario;
+
+//     if (result.tipo === 'admin') {
+//         return next();
+//     } else {
+//         res.status(403).send("Acesso negado. Permissões insuficientes.");
+//         res.redirect('/');
+//     }
+// }
+
+function verificarAdmin(req, res, next) {
+    if (req.session && req.session.usuario && req.session.usuario.tipo === 'admin') {
+        return next();
+    } else {
+        res.redirect('/');
+    }
+}
+
 router.get('/', controllerLogin.login); 
 router.post('/validar', controllerLogin.validarPSW)
 
@@ -21,9 +40,10 @@ router.post('/deletarUsuario', verificarAutenticacao, controllerLogin.deletarUsu
 
 router.get('/solicitacao', verificarAutenticacao, controllerLogin.solicitacao);
 router.post('/solicitacao/:id', verificarAutenticacao, controllerLogin.doarSG);
+router.post('/solcitacao/:id', verificarAutenticacao, controllerLogin.solicitarSG);
 
-router.get('/listarUsuario', verificarAutenticacao, adminControllers.listarUsuarios);
-router.delete('/listarUsuario/:id_user', verificarAutenticacao, adminControllers.deletarUsuario);
+router.get('/listarUsuario', verificarAdmin, adminControllers.listarUsuarios);
+router.delete('/listarUsuario/:id_user', verificarAdmin, adminControllers.deletarUsuario);
 
 router.get('/suporte', controllerLogin.suporte);
 router.get('/emoProx', verificarAutenticacao, controllerLogin.hemocentro);
