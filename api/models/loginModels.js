@@ -39,6 +39,7 @@ function validarPSW(p_login, p_senha, callback) {
     });
 }
 
+
 function getUsuarioByCPF(cpf_user, callback) {
     const query = `SELECT cpf_user FROM Usuario WHERE cpf_user = "${cpf_user}"`;
     console.log("SQL: " + query);

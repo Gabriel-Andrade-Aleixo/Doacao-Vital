@@ -4,6 +4,7 @@ const router = express.Router();
 
 const controllerLogin = require('../controllers/loginControllers.js');
 const adminControllers = require('../controllers/adminControllers.js');
+const loginModels = require('../models/loginModels.js')
 
 function verificarAutenticacao(req, res, next) {
     if (req.session && req.session.usuario) {
@@ -13,37 +14,45 @@ function verificarAutenticacao(req, res, next) {
     }
 }
 
-// function verificarAdmin(req, res, next) {
-//     req.session.usuario = result.usuario;
-
-//     if (result.tipo === 'admin') {
-//         return next();
-//     } else {
-//         res.status(403).send("Acesso negado. Permissões insuficientes.");
-//         res.redirect('/');
-//     }
-// }
-
 function verificarAdmin(req, res, next) {
-    if (req.session && req.session.usuario && req.session.usuario.tipo === 'admin') {
-        return next();
+    console.log("Verificando admin:", req.session.usuario); // Depuração
+    if (req.session && req.session.funcionarios) {
+        return next(); // Usuário autenticado e é administrador
     } else {
         res.redirect('/');
     }
 }
 
-router.get('/', controllerLogin.login); 
+// if (req.session && req.session.usuario && req.session.usuario.tipo === 'admin') {
+//     return next();
+// } else {
+//     console.log("Acesso negado. Redirecionando para login.");
+//     res.redirect('/');
+// }
+
+
+// function verificarAdmin(req, res, next) {
+//     if (req.session && req.session.usuario && req.session.usuario.tipo === 'admin') {
+//         return next();
+//     } else {
+//         res.redirect('/');
+//     }
+// }
+
+router.get('/', controllerLogin.login);
 router.post('/validar', controllerLogin.validarPSW)
 
 router.get('/contaUsuario', verificarAutenticacao, controllerLogin.contaUsuario);
 router.post('/deletarUsuario', verificarAutenticacao, controllerLogin.deletarUsuario);
+router.get('/sairConta', verificarAutenticacao, controllerLogin.sairConta);
 
 router.get('/solicitacao', verificarAutenticacao, controllerLogin.solicitacao);
 router.post('/solicitacao/:id', verificarAutenticacao, controllerLogin.doarSG);
 router.post('/solcitacao/:id', verificarAutenticacao, controllerLogin.solicitarSG);
 
-router.get('/listarUsuario', verificarAdmin, adminControllers.listarUsuarios);
-router.delete('/listarUsuario/:id_user', verificarAdmin, adminControllers.deletarUsuario);
+router.get('/listarUsuario', verificarAutenticacao, adminControllers.listarUsuarios);
+router.delete('/listarUsuario/:id_user', verificarAutenticacao, adminControllers.deletarUsuario);
+router.post('/registrarFunc', verificarAutenticacao, adminControllers.registroPSW);
 
 router.get('/suporte', controllerLogin.suporte);
 router.get('/emoProx', verificarAutenticacao, controllerLogin.hemocentro);

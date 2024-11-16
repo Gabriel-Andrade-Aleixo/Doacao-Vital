@@ -9,7 +9,8 @@ module.exports = {
     contaUsuario,
     deletarUsuario,
     doarSG,
-    solicitarSG
+    solicitarSG,
+    sairConta
 }
 
 function login(req, res) {
@@ -148,6 +149,17 @@ function deletarUsuario(req, res) {
     });
 }
 
+function sairConta(req, res){
+    req.session.destroy((err) => {
+        if (err) {
+            console.error("Erro ao encerrar a sessão:", err);
+            return res.redirect('/');
+        }
+        res.redirect('/');
+    });
+
+}
+
 function doarSG(req, res) {
     console.log("Rota Doar chegou");
 
@@ -184,7 +196,7 @@ function solicitarSG(req, res) {
             console.log("Solicitação registrada com sucesso:", resultados);
             res.render('solicitacao.ejs', {
                 cpf: req.session.usuario.cpf_user,
-                mensagem: "Solicitado"
+                mensagem: "Solicitado com sucesso"
             })
         }
     });
