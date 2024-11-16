@@ -192,6 +192,15 @@ Para o banco funcionar no site será necessário cadastrar algumas coisas direto
   ```
 Assim no momento que o usuário for se cadastrar, ele só poderá escolher entre algum desses tipos sanguíneos já cadastrados
 
+- Cadastre pelo menos 1 Hemocentro:
+  ```sql
+  INSERT INTO Hemocentro (nome_hemocentro, endereco_hemocentro, telefone_hemocentro) 
+  VALUES 
+  ('Hemocentro Central', 'Av. Central, 1000', '1133345566'), 
+  ('Hemocentro Norte', 'Rua Norte, 500', '1122233344');
+  ```
+Casdtre um Hemocentro para podermos cadastrar um funcionário admininstrador
+
 - Cadastre os funcionários:
   ```sql
   INSERT INTO Funcionarios (nome_func, cpf_func, bairro_func, rua_func, numero_func, cidade_func, telefone_func, id_sangue, email_func, senha_func, cargo, data_nasc, id_hemocentro) 

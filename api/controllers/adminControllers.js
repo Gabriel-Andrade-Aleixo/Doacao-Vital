@@ -3,7 +3,8 @@ const adminModels = require("../models/adminModels");
 module.exports = {
     listarUsuarios,
     deletarUsuario,
-    registroPSW
+    registroPSW,
+    registroPSW2
 };
 
 function listarUsuarios(req, res) {
@@ -43,7 +44,9 @@ function registroPSW(req, res) {
         title: "Registro",
         mensagem: "Cadastre-se"
     })
+}
 
+function registroPSW2(req, res) {
     console.log("\nController Validar Registro.....")
     const n_login = req.body.login;
     const n_email = req.body.email;
@@ -81,11 +84,11 @@ function registroPSW(req, res) {
         if (result.length < 1) {
             console.log("Dados Válidos!")
 
-            res.render("introAdmin.ejs");
+            res.render("registroFunc.ejs");
         }
         else {
             console.log("Dados Inválidos!")
-            res.render("registroFunc.ejs")
+            res.render("introAdmin.ejs")
         }
     })
 }

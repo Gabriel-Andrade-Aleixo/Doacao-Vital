@@ -52,7 +52,8 @@ router.post('/solcitacao/:id', verificarAutenticacao, controllerLogin.solicitarS
 
 router.get('/listarUsuario', verificarAutenticacao, adminControllers.listarUsuarios);
 router.delete('/listarUsuario/:id_user', verificarAutenticacao, adminControllers.deletarUsuario);
-router.post('/registrarFunc', verificarAutenticacao, adminControllers.registroPSW);
+router.get('/registrarFunc', verificarAutenticacao, adminControllers.registroPSW);
+router.post('/registrarFunc/registro', verificarAutenticacao, adminControllers.registroPSW2);
 
 router.get('/suporte', controllerLogin.suporte);
 router.get('/emoProx', verificarAutenticacao, controllerLogin.hemocentro);

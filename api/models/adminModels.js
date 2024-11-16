@@ -33,7 +33,7 @@ function deletarUsuario(id_user, callback) {
 }
 
 function registroFUN(p_login, p_senha, p_email, p_sg, p_tel, p_bairro, p_rua, p_num, p_cid, p_cpf, p_cargo, p_nasc, p_hemo, callback) {
-    m_sql = `INSERT INTO Usuario (nome_user, cpf_user, bairro_user, rua_user, numero_user, cidade_user, telefone_user, id_sangue, email_user, senha_user) VALUES ("${p_login}", "${p_cpf}", "${p_bairro}", "${p_rua}", "${p_num}", "${p_cid}", "${p_tel}", "${p_sg}", "${p_email}", "${p_senha}", "${p_cargo}", "${p_nasc}", "${p_hemo}")`;
+    m_sql = `INSERT INTO Funcionarios (nome_func, cpf_func, bairro_func, rua_func, numero_func, cidade_func, telefone_func, id_sangue, email_func, senha_func, cargo, data_nasc, id_hemocentro) VALUES ("${p_login}", "${p_cpf}", "${p_bairro}", "${p_rua}", "${p_num}", "${p_cid}", "${p_tel}", "${p_sg}", "${p_email}", "${p_senha}", "${p_cargo}", "${p_nasc}", "${p_hemo}")`;
 
 
 
