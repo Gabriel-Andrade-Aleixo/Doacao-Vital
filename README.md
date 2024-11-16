@@ -128,7 +128,7 @@ Certifique-se de que o arquivo `doacaoVital.sql` contenha as tabelas necessária
   CREATE TABLE Usuario (
   id_user INT PRIMARY KEY AUTO_INCREMENT,
   nome_user VARCHAR(70),
-  cpf_user VARCHAR(11),
+  cpf_user VARCHAR(14) UNIQUE,
   bairro_user VARCHAR(100),
   rua_user VARCHAR(100),
   numero_user CHAR(4),
@@ -158,7 +158,7 @@ Certifique-se de que o arquivo `doacaoVital.sql` contenha as tabelas necessária
   CREATE TABLE Funcionarios (
   id_funcionario INT PRIMARY KEY AUTO_INCREMENT,
   nome_func VARCHAR(70),
-  cpf_func VARCHAR(11),
+  cpf_func VARCHAR(14) UNIQUE,
   bairro_func VARCHAR(100),
   rua_func VARCHAR(100),
   numero_func CHAR(4),
