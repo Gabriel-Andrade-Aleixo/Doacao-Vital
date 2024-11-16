@@ -34,7 +34,7 @@ router.post('/mensagem', (req, res) => {
             botResponse = 'Para outros problemas, entre em contato conosco diretamente. Estamos aqui para ajudar!';
             break;
         case 'telefone':
-            botResponse = 'Você pode nos ligar pelo telefone: (XX) XXXX-XXXX.';
+            botResponse = 'Você pode nos ligar pelo telefone: (55) 991231-9840.';
             break;
         case 'email':
             botResponse = 'Nosso e-mail de suporte é suporte@hemocentro.com. Responderemos o mais rápido possível!';

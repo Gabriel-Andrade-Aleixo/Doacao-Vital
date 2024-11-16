@@ -17,29 +17,143 @@
         border: solid 1px black;
         height: 15vh;
         background-color: rgb(189, 90, 57);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        position: relative;
     }
-   
+
+    header h1 {
+        font-size: 2rem;
+        color: white;
+        margin: 0;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    #setecols img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    nav.linkAlunos ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+    }
+
+    nav.linkAlunos ul li {
+        margin-right: 15px;
+    }
+
+    nav.linkAlunos ul li a {
+        color: white;
+        text-decoration: none;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    .chat-container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .chat-box {
+        background-color: white;
+        padding: 15px;
+        border: solid 1px #ccc;
+        border-radius: 8px;
+        height: 300px;
+        overflow-y: auto;
+    }
+
+    .chat-input-container {
+        margin-top: 10px;
+    }
+
+    .option-button {
+        background-color: rgb(189, 90, 57);
+        color: white;
+        padding: 10px;
+        margin: 5px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .option-button:hover {
+        background-color: #d97c47;
+    }
+
+    .user-message, .bot-message {
+        margin: 10px 0;
+        padding: 10px;
+        background-color: #f1f1f1;
+        border-radius: 5px;
+    }
+
+    .bot-message {
+        background-color: #e0e0e0;
+    }
+
+    @media (max-width: 768px) {
+        header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+            position: relative;
+            transform: none;
+            text-align: center;
+        }
+
+        nav.linkAlunos ul {
+            justify-content: center;
+            width: 100%;
+        }
+
+        nav.linkAlunos ul li {
+            display: block;
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+
+        .chat-container {
+            width: 100%;
+            padding: 10px;
+        }
+    }
 </style>
 
 <body>
     <header>
-        <div class="row">
-            <div id="setecols" class="form-group col-md-7">
-                <figure>
-                    <img id="logo" src="./imagens/Gota.png" alt="Logo Projeto do Hemocentro">
-                </figure>
-            </div>
-            <h1>Titulo Legal</h1>
-            <div class="col-md-3">
-                <nav class="linkAlunos">
-                    <ul>
-                        <li><a href="/solicitacao">Solicitações</a></li>
-                        <li><a href="/emoProx">Hemocentros</a></li>
-                        <li><a href="/suporte">Suporte</a></li>
-                        <li><a href="/contaUsuario">Conta</a></li>
-                    </ul>
-                </nav>
-            </div>
+        <div id="setecols" class="form-group col-md-7">
+            <figure>
+                <img id="logo" src="./imagens/Gota.png" alt="Logo Projeto do Hemocentro">
+            </figure>
+        </div>
+        <h1>Doação Vital</h1>
+        <div class="col-md-3">
+            <nav class="linkAlunos">
+                <ul>
+                    <li><a href="/solicitacao">Solicitações</a></li>
+                    <li><a href="/emoProx">Hemocentros</a></li>
+                    <li><a href="/suporte">Suporte</a></li>
+                    <li><a href="/contaUsuario">Conta</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
     <h1>Suporte</h1>
@@ -50,20 +164,18 @@
         </div>
         <div class="chat-input-container" id="optionsContainer">
             <script>
-                let currentOptions = []; 
-                let thankedOnce = false; 
-                
+                let currentOptions = [];
+                let thankedOnce = false;
+
                 function sendChoice(choice) {
                     const chatBox = document.getElementById('chatBox');
                     const optionsContainer = document.getElementById('optionsContainer');
-            
-                
+
                     const userMessage = document.createElement('div');
                     userMessage.classList.add('user-message');
-                    userMessage.textContent = choice; 
+                    userMessage.textContent = choice;
                     chatBox.appendChild(userMessage);
-            
-                   
+
                     fetch('/suporte/mensagem', {
                         method: 'POST',
                         headers: {
@@ -75,11 +187,11 @@
                     .then(data => {
                         const botResponse = document.createElement('div');
                         botResponse.classList.add('bot-message');
-            
+
                         if (choice === "obrigado" && !thankedOnce) {
                             botResponse.textContent = 'De nada! Fico feliz em poder ajudar!';
                             thankedOnce = true;
-                            displayOptions(['Voltar']); // Exibe somente a opção "Voltar" ao final da conversa
+                            displayOptions(['Voltar']);
                         } else if (choice === "ajuda") {
                             botResponse.textContent = data.botResponse;
                             currentOptions = ['Documentação', 'Tutoriais', 'Suporte Técnico', 'Voltar'];
@@ -94,16 +206,16 @@
                             displayOptions(currentOptions);
                         } else if (choice === "voltar") {
                             botResponse.textContent = 'Claro, vamos recomeçar nossa conversa.';
-                            thankedOnce = false; 
+                            thankedOnce = false;
                             displayOptions(['Ajuda', 'Problema', 'Contato']);
                         } else if (choice === "onde doar?") {
                             botResponse.textContent = 'Vá para a página de Solicitação para mais informações :)';
-                            displayOptions(['Obrigado', 'Voltar']); 
+                            displayOptions(['Obrigado', 'Voltar']);
                         } else if (["documentação", "tutoriais", "suporte técnico", "erro de login", "outro", "telefone", "email"].includes(choice)) {
                             botResponse.textContent = data.botResponse;
                             displayOptions(['Obrigado', 'Voltar']);
                         }
-            
+
                         chatBox.appendChild(botResponse);
                         chatBox.scrollTop = chatBox.scrollHeight;
                     })
@@ -111,12 +223,11 @@
                         console.error('Erro ao enviar a mensagem:', error);
                     });
                 }
-            
-              
+
                 function displayOptions(options) {
                     const optionsContainer = document.getElementById('optionsContainer');
-                    optionsContainer.innerHTML = ''; // Limpa as opções anteriores
-            
+                    optionsContainer.innerHTML = '';
+
                     options.forEach(option => {
                         const optionButton = document.createElement('button');
                         optionButton.classList.add('option-button');
@@ -127,21 +238,13 @@
                         optionsContainer.appendChild(optionButton);
                     });
                 }
-            
-                // Exibe as opções iniciais ao carregar a página
+
                 window.onload = function() {
                     displayOptions(['Ajuda', 'Problema', 'Contato']);
                 };
             </script>
-            
-            
-        
         </div>
     </main>
-
-
-
-    
 </body>
 
 </html>
