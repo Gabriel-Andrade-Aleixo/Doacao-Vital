@@ -5,20 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/imagens/logofav.ico">
 
     <title>
         <%= title %>
     </title>
 
-    <!-- Custom CSS -->
     <style>
-        /* Body and Page Layout */
         body {
             background-color: rgb(255, 255, 234);
             font-family: Arial, sans-serif;
@@ -29,7 +25,6 @@
             margin: 0;
         }
 
-        /* Header */
         header {
             background-color: rgb(189, 90, 57);
             padding: 5px;
@@ -81,7 +76,6 @@
             padding: 10px;
         }
 
-        /* Footer */
         footer {
             margin-top: 20px;
             font-size: 0.9rem;
@@ -98,7 +92,6 @@
             text-decoration: underline;
         }
 
-        /* Error Message */
         .alert {
             margin-bottom: 20px;
             font-size: 1rem;
@@ -107,8 +100,6 @@
 </head>
 
 <body>
-
-    <!-- Header -->
     <header>
         <figure>
             <img id="logo" src="./imagens/Gota.png" alt="Logo Projeto do Hemocentro">
@@ -119,7 +110,6 @@
         </nav>
     </header>
 
-    <!-- Login Form -->
     <div class="blocoLogin">
         <main>
             <div class="erro">
@@ -143,12 +133,10 @@
         </main>
     </div>
 
-    <!-- Footer -->
     <footer>
         © 2024 Doação Vital | <a href="https://site.fatecfranca.edu.br/">Powered by Fatec Franca</a>
     </footer>
 
-    <!-- Format CPF Script -->
     <script>
         function formatCPF(input) {
             let value = input.value.replace(/[^0-9a-zA-Z]/g, '');
