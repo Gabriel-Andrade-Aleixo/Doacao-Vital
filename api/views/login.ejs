@@ -2,15 +2,14 @@
 <html lang="pt-br">
 
 <head>
-    <!-- Meta tags Obrigatórias -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="/estilos/login.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/estilos/login.css"/>
+    <link rel="icon" type="image/x-icon" href="imagens/logofav.ico">
 
     <title>
         <%= title %>
@@ -26,6 +25,14 @@
         body {
             background-color: rgb(255, 255, 234);
         }
+        .navbar{
+            display: flex;
+            align-self: flex-end;
+        }
+        .navbar_link ul{
+            list-style: none;
+            text-decoration: none;
+        }
     </style>
 </head>
 
@@ -40,9 +47,9 @@
             </div>
 
             <div class="col-md-3 col-md-offset-">
-                <nav class="linkAlunos">
+                <nav class="navbar">
                     <ul>
-                        <li><a href="/suporte">Suporte</a></li>
+                        <li class="navbar_link"><a href="/suporte">Suporte</a></li>
                     </ul>
                 </nav>
             </div>

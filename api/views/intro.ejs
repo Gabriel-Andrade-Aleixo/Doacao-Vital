@@ -9,6 +9,7 @@
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" media="screen" href="/estilos/login.css" />
+    <link rel="icon" type="image/x-icon" href="imagens/logofav.ico">
     <style>
         header {
             border: solid 1px black;
@@ -46,59 +47,23 @@
             background-color: rgb(255, 255, 234);
             margin: 0;
             font-family: Arial, sans-serif;
+            height: 100vh;
         }
 
-        .carrosel-wrapper {
-            overflow-x: auto;
-            display: flex;
-            white-space: nowrap;
-            scrollbar-width: none;
-            cursor: grab;
-        }
-
-        .carrosel-wrapper::-webkit-scrollbar {
-            display: none;
-        }
-
-        .carrosel {
-            display: flex;
-            gap: 10px;
-            padding: 10px;
-        }
-
-        .carrosel img {
+        .bd-imagens img {
             width: 640px;
             height: 450px;
             flex: 0 0 auto;
             border-radius: 5px;
+            box-shadow: 10px 5px 5px rgba(165, 159, 159, 0.686);
         }
 
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                height: auto;
-                padding: 10px;
-                text-align: center;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .carrosel-wrapper {
-                justify-content: flex-start;
-            }
-
-            nav ul li {
-                margin: 5px;
-            }
-
-            h1 {
-                font-size: 1.5rem;
-            }
+        .bg-body{
+            border: 2px solid rgb(189, 90, 57);
+            box-shadow: 10px 5px 5px rgb(179, 158, 158);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
@@ -110,8 +75,6 @@
         </figure>
         <h2 id="CorTt">Doação  Vital <hr></h2>
         
-        
-        <br>
         <nav>
             <ul>
                 <li><a href="/solicitacao">Solicitações</a></li>
@@ -122,29 +85,29 @@
         </nav>
     </header>
 
-    <main class="container">
-        <h1 >Introdução</h1>
-        <section>
-            <p>Nosso objetivo é aprimorar a administração dos hemocentros, contribuindo para um sistema de saúde mais eficiente e ágil.</p>
-            <h3>Benefícios</h3>
-            <ul>
-                <li>Otimização de estoques de sangue e componentes</li>
-                <li>Facilidade no agendamento e controle de doações</li>
-                <li>Atendimento rápido e eficiente</li>
-            </ul>
-        </section>
-
-        <h2>Galeria de Hemocentro</h2>
-        <p>Explore imagens das nossas ações, serviços e instalações</p>
-        <div class="carrosel-wrapper">
-            <section class="carrosel">
-                <img src="./imagens/doa_basquetefranca.jpeg" alt="Doação do Franca Basquete" />
-                <img src="./imagens/doa_exercito.jpg" alt="Ação do Exército" />
-                <img src="./imagens/doa_geral.jpeg" alt="Pessoas Doando Sangue" />
-                <img src="./imagens/doa_enfermagem.jpg" alt="Pessoas Doando Sangue" />
+    <div class="bg-body">
+        <main class="container">
+            <h1 >Introdução</h1>
+            <section>
+                <p>Nosso objetivo é aprimorar a administração dos hemocentros, contribuindo para um sistema de saúde mais eficiente e ágil.</p>
+                <h3>Benefícios</h3>
+                <ul>
+                    <li>Otimização de estoques de sangue e componentes</li>
+                    <li>Facilidade no agendamento e controle de doações</li>
+                    <li>Atendimento rápido e eficiente</li>
+                </ul>
             </section>
-        </div>
-    </main>
+
+            <h2>Galeria de Hemocentro</h2>
+            <p>Explore imagens das nossas ações, serviços e instalações</p>
+            <section class="bd-imagens">
+                <img src="./imagens/doa_basquetefranca.jpeg" alt="Doação do Franca Basquete">
+                <img src="./imagens/doa_exercito.jpg" alt="Ação do Exército">
+                <img src="./imagens/doa_geral.jpeg" alt="Pessoas Doando Sangue">
+                <img src="./imagens/doa_enfermagem.jpg" alt="Equipe de Enfermagem">
+            </section>
+        </main>
+    </div>
 </body>
 
 </html>
