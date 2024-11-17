@@ -36,7 +36,7 @@ function deletarUsuario(id_user, callback) {
 
 function registroFUN(p_login, p_senha, p_email, p_sg, p_tel, p_bairro, p_rua, p_num, p_cid, p_cpf, p_cargo, p_nasc, p_hemo, callback) {
 
-    const checkCPFSql = `SELECT cpf_user FROM Funcionarios WHERE cpf_user = "${p_cpf}"`;
+    const checkCPFSql = `SELECT cpf_func FROM Funcionarios WHERE cpf_func = "${p_cpf}"`;
   
     conexao.query(checkCPFSql, (erro, resultado) => {
       if (erro) {
