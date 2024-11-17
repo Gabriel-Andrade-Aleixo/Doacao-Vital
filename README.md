@@ -29,7 +29,7 @@ Siga os passos abaixo para instalar e rodar o projeto.
     ```
 <hr>
 
-5. **Configuração do Banco de Dados MySQL**:
+4. **Configuração do Banco de Dados MySQL**:
 
 - Acesse o MySQL com o usuário `root` (ou outro usuário com permissões):
     ```bash
