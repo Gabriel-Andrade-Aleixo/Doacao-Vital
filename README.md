@@ -20,12 +20,7 @@ Siga os passos abaixo para instalar e rodar o projeto.
     cd .\Doacao-Vital\
     ```
 
-3. **Inicialize o projeto Node.js**:
-    ```cmd
-    npm init -y
-    ```
-
-4. **Instale as dependências necessárias**:
+3. **Instale as dependências necessárias**:
     ```bash
     npm install express --save
     npm install nodemon --save
