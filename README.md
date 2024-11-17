@@ -57,8 +57,11 @@ Siga os passos abaixo para instalar e rodar o projeto.
 - Estabeleça conexao com o  Mysql :
 
     ° Dentro do arquivo Doacao-Vital
+  
     ° vá para a pasta API, Entre em config
-    ° Selecione  o arquivo conexao.js 
+  
+    ° Selecione  o arquivo conexao.js
+  
     ° faça oque esta a seguir:
     
     ```js
