@@ -117,13 +117,13 @@ Certifique-se de que o arquivo `doacaoVital.sql` contenha as tabelas necessária
   );
     
   CREATE TABLE Hemocentro (
-  id_hemo INT PRIMARY KEY AUTO_INCREMENT,
-  nome_hemo VARCHAR(20),
+  id_hemocentro INT PRIMARY KEY AUTO_INCREMENT,
+  nome_hemocentro VARCHAR(20),
   bairro_hemo VARCHAR(50),
   rua_hemo VARCHAR(50),
   numero_hemo VARCHAR(4),
   cidade_hemo VARCHAR(50),
-  telefone_hemo VARCHAR(15)
+  telefone_hemocentro VARCHAR(15)
   );
     
   CREATE TABLE Solic_sangue (
