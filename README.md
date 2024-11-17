@@ -125,7 +125,7 @@ Siga os passos abaixo para instalar e rodar o projeto.
 
    - Agora, você deve conseguir rodar o comando npm install express ou qualquer outro comando npm sem problemas de permissão.
 
-3. Depois de tudo isso adicione o codigo abaixo no seu package.json pra ter certeza de que tudo vai funcionar:
+4. Depois de tudo isso adicione o codigo abaixo no seu package.json pra ter certeza de que tudo vai funcionar:
     ```
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
