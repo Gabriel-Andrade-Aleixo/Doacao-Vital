@@ -1,4 +1,5 @@
 const adminModels = require("../models/adminModels");
+const loginModels = require("../models/loginModels");
 
 module.exports = {
     listarUsuarios,
@@ -17,7 +18,7 @@ function listarUsuarios(req, res) {
 
         else {
             console.log("Usuarios encontrados:", result);
-            res.render("frn_listUser.ejs", {
+            res.render("frm_listUser.ejs", {
                 obj_user: result
             });
         }
@@ -76,19 +77,40 @@ function registroPSW2(req, res) {
     console.log("Nascimento: " + n_nasc)
     console.log("Hemocentro: " + n_hemo)
 
-    adminModels.registroFUN(n_login, n_senha, n_email, n_sg, n_tel, n_bairro, n_rua, n_num, n_cid, n_cpf, n_cargo, n_nasc, n_hemo, function (erro, result) {
-        console.log("Entrou em registro Funcionario");
-        if (erro) {
-            throw erro
-        }
-        if (result.length < 1) {
-            console.log("Dados Válidos!")
+    adminModels.registroFUN(
+        n_login,
+        n_senha,
+        n_email,
+        n_sg,
+        n_tel,
+        n_bairro,
+        n_rua,
+        n_num,
+        n_cid,
+        n_cpf,
+        n_cargo,
+        n_nasc,
+        n_hemo,
 
-            res.render("registroFunc.ejs");
+        function (erro, result) {
+            // if (erro) {
+            //     console.error("Erro ao registrar usuário:", erro);
+            //     return res.status(500).send("Erro no servidor.");
+            // }
+
+            if (result && result.mensagem === "CPF já cadastrado") {
+                console.log("CPF já existe no sistema!");
+                return res.render("registroFunc.ejs", {
+                    title: "Registro",
+                    mensagem: "CPF já cadastrado. Por favor, use outro.",
+                });
+            }
+
+            console.log("Usuário registrado com sucesso!");
+            res.render("registroFunc.ejs", {
+                title: "Registro",
+                mensagem: "Registro concluído com sucesso.",
+            });
         }
-        else {
-            console.log("Dados Inválidos!")
-            res.render("introAdmin.ejs")
-        }
-    })
+    );
 }
