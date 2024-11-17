@@ -227,72 +227,185 @@ main{
         font-size: 1em;
     }
 }
-
-
-/* Estilo para a Seção de Doação */
-
-.doacao-form {
-    width: 100%;
-    max-width: 500px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-}
-
-.doacao-form h2 {
-    color: #bd5a39;
+/* Estilo para a Seção de Solicitação */
+#SolS{
+    font-family: Arial, sans-serif;
+    font-size: 2.5em;
+    color: #ff4d4d;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-.doacao-form label {
-    font-weight: bold;
-    font-size: 1.1em;
-    margin-bottom: 5px;
-    color: #333;
+#dois {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.doacao-form input, .doacao-form select {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
+form {
+    font-family: Arial, sans-serif;
     font-size: 1em;
 }
 
-.doacao-form input:focus, .doacao-form select:focus {
-    outline: none;
-    border-color: #bd5a39;
+label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 5px;
+    color: #333;
 }
 
-.doacao-form button {
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #ff4d4d;
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 77, 77, 0.5);
+}
+
+.btn {
+    display: inline-block;
+    width: 100%;
     padding: 12px;
-    font-size: 1.1em;
+    font-size: 1.2em;
     font-weight: bold;
     color: #fff;
-    background-color: #bd5a39;
+    background-color: #ff4d4d;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-.doacao-form button:hover {
-    background-color: #a2442d;
+.btn:hover {
+    background-color: #e60000;
+    transform: translateY(-3px);
 }
 
-@media (max-width: 600px) {
-    .doacao-form {
-        padding: 15px;
-    }
-    .doacao-form label, .doacao-form button {
-        font-size: 1em;
-    }
+.btn:active {
+    transform: translateY(0);
 }
 
+/* Estilo para a Seção de Doação */
+
+
+#DoarS {
+    font-family: Arial, sans-serif;
+    font-size: 2.5em;
+    color: #ff4d4d;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.blocoDoar {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 5px;
+    color: #333;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #ff4d4d;
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 77, 77, 0.5);
+}
+
+.btn {
+    display: inline-block;
+    width: 100%;
+    padding: 12px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ff4d4d;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    background-color: #e60000;
+    transform: translateY(-3px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+
+/*----------------------------------------
+emoProx
+-----------------------------------------*/
+#lista {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#lista li {
+    background-color: #f7f7f7;
+    color: #333;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#lista li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    background-color: #ffe0e0;
+}
+
+#lista li::before {
+    content: "📍";
+    margin-right: 10px;
+    font-size: 1.2em;
+    color: #ff4d4d;
+}
 

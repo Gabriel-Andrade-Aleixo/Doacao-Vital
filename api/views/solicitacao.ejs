@@ -43,6 +43,11 @@
     body {
         background-color: rgb(237, 237, 209);
     }
+    
+    #Amelhor{
+ color: white;
+}
+
 </style>
 
 <body>
@@ -50,7 +55,7 @@
         <figure>
             <img id="logo" src="./imagens/Gota.png" alt="Logo Projeto do Hemocentro">
         </figure>
-        <a href="/intro.ejs"><h1 id="h1-site">Doação Vital</h1></a>
+        <a id="Amelhor" href="/Doacao-Vital/api/views/intro.ejs"><h1 id="h1-site">Doação Vital</h1></a>
         
         <nav class="navbar">
             <a href="/solicitacao">Solicitações</a>
@@ -70,7 +75,7 @@
         </center>
     </main>
 
-    <h1>DOAR</h1>
+    <h1 id="DoarS">DOAR</h1>
     <div class="blocoDoar">
         <main>
             <center>
@@ -90,8 +95,8 @@
         </main>
     </div>
 
-    <h1>SOLICITAR</h1>
-    <main>
+    <h1 id="SolS">SOLICITAR</h1>
+    <main id="dois">
         <center>
             <form action="/solcitacao/<%= cpf %>" method="post" class="form-login">
                 <label for="cpf">CPF:</label>
