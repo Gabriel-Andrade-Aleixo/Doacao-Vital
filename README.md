@@ -4,7 +4,6 @@
 
 Certifique-se de ter instalado os seguintes componentes em sua máquina:
 - [Node.js](https://nodejs.org/)
-- [Npm](https://www.npmjs.com/)
 - [MySQL](https://www.mysql.com/)
 
 ## Instalação
