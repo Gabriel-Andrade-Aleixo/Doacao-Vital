@@ -173,10 +173,10 @@ Assim no momento que o usuário for se cadastrar, ele só poderá escolher entre
 
 - Cadastre pelo menos 1 Hemocentro:
   ```sql
-  INSERT INTO Hemocentro (nome_hemocentro, endereco_hemocentro, telefone_hemocentro) 
+  INSERT INTO Hemocentro (nome_hemo, bairro_hemo, rua_hemo, numero_hemo, cidade_hemo, telefone_hemo)
   VALUES 
-  ('Hemocentro Central', 'Av. Central, 1000', '1133345566'), 
-  ('Hemocentro Norte', 'Rua Norte, 500', '1122233344');
+  ('Hemocentro Central', 'Centro', 'Rua das Flores', '123', 'São Paulo', '(11) 98765-4321'),
+  ('Hemocentro Regional', 'Jardins', 'Avenida Brasil', '456', 'Rio de Janeiro', '(21) 91234-5678');
   ```
 Casdtre um Hemocentro para podermos cadastrar um funcionário admininstrador
 
