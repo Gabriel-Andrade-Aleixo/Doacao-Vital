@@ -125,6 +125,11 @@ Certifique-se de que o arquivo `doacaoVital.sql` contenha as tabelas necessária
 
 - Criando as Tabelas:
   ```sql
+  CREATE TABLE Tipo_sangue (
+  id_sangue INT PRIMARY KEY AUTO_INCREMENT,
+  descricao CHAR(3)
+  );
+
   CREATE TABLE Usuario (
   id_user INT PRIMARY KEY AUTO_INCREMENT,
   nome_user VARCHAR(70),
