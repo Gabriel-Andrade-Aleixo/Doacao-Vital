@@ -4,7 +4,6 @@
 
 Certifique-se de ter instalado os seguintes componentes em sua máquina:
 - [Node.js](https://nodejs.org/)
-- [Npm](https://www.npmjs.com/)
 - [MySQL](https://www.mysql.com/)
 
 ## Instalação
@@ -21,12 +20,7 @@ Siga os passos abaixo para instalar e rodar o projeto.
     cd .\Doacao-Vital\
     ```
 
-3. **Inicialize o projeto Node.js**:
-    ```cmd
-    npm init -y
-    ```
-
-4. **Instale as dependências necessárias**:
+3. **Instale as dependências necessárias**:
     ```bash
     npm install express --save
     npm install nodemon --save
@@ -35,12 +29,7 @@ Siga os passos abaixo para instalar e rodar o projeto.
     ```
 <hr>
 
-5. **Configuração do Banco de Dados MySQL**:
-
-- Acesse o MySQL com o usuário `root` (ou outro usuário com permissões):
-    ```bash
-    mysql -u root -p
-    ```
+4. **Configuração do Banco de Dados MySQL**:
 
 - Crie o banco de dados:
     ```sql
@@ -68,8 +57,11 @@ Siga os passos abaixo para instalar e rodar o projeto.
 - Estabeleça conexao com o  Mysql :
 
     ° Dentro do arquivo Doacao-Vital
+  
     ° vá para a pasta API, Entre em config
-    ° Selecione  o arquivo conexao.js 
+  
+    ° Selecione  o arquivo conexao.js
+  
     ° faça oque esta a seguir:
     
     ```js
@@ -125,6 +117,11 @@ Certifique-se de que o arquivo `doacaoVital.sql` contenha as tabelas necessária
 
 - Criando as Tabelas:
   ```sql
+  CREATE TABLE Tipo_sangue (
+  id_sangue INT PRIMARY KEY AUTO_INCREMENT,
+  descricao CHAR(3)
+  );
+
   CREATE TABLE Usuario (
   id_user INT PRIMARY KEY AUTO_INCREMENT,
   nome_user VARCHAR(70),
