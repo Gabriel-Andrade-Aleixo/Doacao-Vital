@@ -52,6 +52,8 @@ router.post('/solcitacao/:id', verificarAutenticacao, controllerLogin.solicitarS
 
 router.get('/listarUsuario', verificarAutenticacao, adminControllers.listarUsuarios);
 router.delete('/listarUsuario/:id_user', verificarAutenticacao, adminControllers.deletarUsuario);
+router.get('/listarFuncionario', verificarAutenticacao, adminControllers.listarFuncionario);
+router.delete('/listarFuncionario/:id_func', verificarAutenticacao, adminControllers.deletarFuncionario);
 router.get('/registrarFunc', verificarAutenticacao, adminControllers.registroPSW);
 router.post('/registrarFunc/registro', verificarAutenticacao, adminControllers.registroPSW2);
 

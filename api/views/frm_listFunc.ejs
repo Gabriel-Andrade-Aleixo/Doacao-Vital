@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Gerenciar Usuarios
+    </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="icon" type="image/x-icon" href="imagens/logofav.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Tilt+Neon&display=swap" rel="stylesheet">
+
+</head>
+<style>
+    header {
+        background-color: rgb(189, 90, 57);
+        padding: 5px;
+        color: white;
+        text-align: center;
+        width: 100%;
+        font-family: "Roboto", serif;
+        font-weight: 100;
+        font-style: normal;
+    }
+
+    header img {
+        height: 100px;
+    }
+ 
+    .navbar {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 1.1rem;
+    }
+
+    .navbar a:hover {
+        color: #ffcccb;
+    }
+
+    h1{
+        font-family: "Roboto", serif;
+        font-weight: 300;
+        font-style: normal;
+    }
+
+    body {
+        background-color: rgb(237, 237, 209);
+        font-family: "Roboto", serif;
+        font-weight: 100;
+        font-style: normal;
+    }
+
+</style>
+<body>
+    <header>
+        <figure>
+            <img id="logo" src="./imagens/Gota.png" alt="Logo Projeto do Hemocentro">
+        </figure>
+        <h1>Doação Vital</h1>
+        
+        <nav class="navbar">
+            <a href="/solicitacao">Solicitações</a>
+            <a href="/emoProx">Hemocentros</a>
+            <a href="/suporte">Suporte</a>
+            <a href="/contaUsuario">Conta</a>
+        </nav>
+    </header>
+    <h1>Lista Usuários</h1>
+    <div>
+        <fieldset>
+            <legend>Registros de Usuários</legend>
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Nome Usuário</th>
+                    <th>CPF</th>
+                    <th>Cidade</th>
+                    <th>Bairro</th>
+                    <th>Rua</th>
+                    <th>Número Casa</th>
+                    <th>Telefone</th>
+                    <th>Sangue</th>
+                    <th>Email</th>
+                    <th>Cargo</th>
+                    <th>Nascimento</th>
+                    <th>ID_Hemocentro</th>
+                </tr>
+                <% for (let i=0; i <obj_func.length; i++) { %>
+                    <tr>
+                        <td>
+                            <%= obj_func[i].id_func %>
+                        </td>
+                        <td>
+                            <%= obj_func[i].nome_func %>
+                        </td>
+                        <td>
+                            <%= obj_func[i].cpf_func %>
+                        </td>
+                        <td>
+                            <%= obj_func[i].cidade_func %>
+                        </td>
+                        <td>
+                            <%= obj_func[i].bairro_func %>
+                        </td>
+                        <td>
+                            <%= obj_func[i].rua_func %>
+                        </td>
+                        <td>
+                            <%= obj_func[i].numero_func %>
+                        </td>
+                        <td>
+                            <%= obj_func[i].telefone_func %>
+                        </td>
+                        <td>
+                            <%= obj_func[i].tipo_sangue_descricao %>
+                        </td>
+                        <td>
+                            <%= obj_func[i].email_func %>
+                        </td>
+                        <td>
+                            <%= obj_func[i].cargo %>
+                        </td>
+                        <td>
+                            <%= obj_func[i].data_nasc %>
+                        </td>
+                        <td>
+                            <%= obj_func[i].id_hemocentro %>
+                        </td>
+                        <td>
+                            <button onclick="deletarFunc('<%= obj_func[i].id_func%>')"
+                                class="btn btn-danger">X</button>
+                        </td>
+                    </tr>
+                    <% } %>
+            </table>
+        </fieldset>
+    </div>
+
+    <script>
+        function deletarFunc(id_func) {
+            if (confirm("Certeza?")) {
+                fetch(`/listarFuncionario/${id_func}`, {
+                    method: "DELETE"
+                })
+                .then(response => {
+                    if(response.ok){
+                        alert("Deletado")
+                        location.reload()
+                    }
+                    else {
+                        alert("Erro")
+                    }
+                })
+                .catch(error => console.errpr("Erro:", error));
+            }
+        }
+    </script>
+</body>
+
+</html>

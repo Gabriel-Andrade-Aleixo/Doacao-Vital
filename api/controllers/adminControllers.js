@@ -5,7 +5,9 @@ module.exports = {
     listarUsuarios,
     deletarUsuario,
     registroPSW,
-    registroPSW2
+    registroPSW2,
+    listarFuncionario,
+    deletarFuncionario
 };
 
 function listarUsuarios(req, res) {
@@ -93,10 +95,10 @@ function registroPSW2(req, res) {
         n_hemo,
 
         function (erro, result) {
-            // if (erro) {
-            //     console.error("Erro ao registrar usuário:", erro);
-            //     return res.status(500).send("Erro no servidor.");
-            // }
+            if (erro) {
+                console.error("Erro ao registrar usuário:", erro);
+                return res.status(500).send("Erro no servidor.");
+            }
 
             if (result && result.mensagem === "CPF já cadastrado") {
                 console.log("CPF já existe no sistema!");
@@ -113,4 +115,35 @@ function registroPSW2(req, res) {
             });
         }
     );
+}
+
+function listarFuncionario(req, res) {
+    console.log("Controller Listar Funcionario...");
+    adminModels.listarFunc(function (erro, result) {
+        if (erro) {
+            throw erro
+        }
+
+
+        else {
+            console.log("Usuarios encontrados:", result);
+            res.render("frm_listFunc.ejs", {
+                obj_func: result
+            });
+        }
+    });
+}
+
+function deletarFuncionario(req, res) {
+    const { id_func } = req.params;
+
+    adminModels.deletarFunc(id_func, (erro, resultado) => {
+        if (erro) {
+            console.error("Erro ao deletar o usuário:", erro);
+            return res.status(500).send("Erro ao deletar o usuário!");
+        }
+        else {
+            res.status(200).send("Usuario deletado!");
+        }
+    })
 }
