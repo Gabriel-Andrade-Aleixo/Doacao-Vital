@@ -31,11 +31,6 @@ Siga os passos abaixo para instalar e rodar o projeto.
 
 4. **Configuração do Banco de Dados MySQL**:
 
-- Acesse o MySQL com o usuário `root` (ou outro usuário com permissões):
-    ```bash
-    mysql -u root -p
-    ```
-
 - Crie o banco de dados:
     ```sql
     CREATE DATABASE doacaoVital;
