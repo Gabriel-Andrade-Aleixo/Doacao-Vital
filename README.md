@@ -122,7 +122,7 @@ Certifique-se de que o arquivo `doacaoVital.sql` contenha as tabelas necessária
   bairro_hemo VARCHAR(50),
   rua_hemo VARCHAR(50),
   numero_hemo VARCHAR(4),
-  cidade_hemo(50),
+  cidade_hemo VARCHAR(50),
   telefone_hemo VARCHAR(15)
   );
     
