@@ -104,6 +104,47 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+         
+         @media (max-width: 768px) {
+            header img {
+                height: 70px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .navbar a {
+                font-size: 0.9rem;
+            }
+
+            .bd-imagens img {
+                max-width: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header img {
+                height: 50px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .navbar {
+                flex-direction: column;
+            }
+
+            .navbar a {
+                margin: 5px 0;
+            }
+
+            .bd-imagens img {
+                max-width: 200px;
+            }
+        }
     </style>
 </head>
 
