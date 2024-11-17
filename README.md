@@ -104,7 +104,36 @@ Siga os passos abaixo para instalar e rodar o projeto.
    
 2. Acesse a aplicação no navegador em [http://localhost:3000](http://localhost:3000).
 
-3. Caso o npm start não esteja funcionado, adicione o npm start no seu package.json dessa maneira:
+
+
+
+
+
+3. Caso o npm start  nao esteja funcionando siga este mini tutorial:
+   - Pesquise por "PowerShell" no menu Iniciar, clique com o botão direito em "Windows PowerShell" e selecione *Executar como administrador*.
+
+   -  Execute o comando abaixo para verificar qual é a política de execução atual:
+   powershell
+   Get-ExecutionPolicy <br>
+   Se o resultado for algo como Restricted, isso significa que nenhum script pode ser executado.
+
+   -  Para permitir a execução de scripts assinados ou todos os scripts, você pode executar o seguinte comando:
+   
+   - Para permitir a execução de *scripts assinados* (uma opção mais segura):
+     powershell
+     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+     
+   - Se preferir permitir *todos os scripts* (menos seguro), use:
+     powershell
+     Set-ExecutionPolicy Unrestricted -Scope CurrentUser
+     
+   -  Quando solicitado, pressione *Y* para confirmar a alteração.
+   
+   - Feche a janela do PowerShell e abra-a novamente como *Administrador* para garantir que a alteração seja aplicada.
+
+   - Agora, você deve conseguir rodar o comando npm install express ou qualquer outro comando npm sem problemas de permissão.
+
+3. Depois de tudo isso adicione o codigo abaixo no seu package.json pra ter certeza de que tudo vai funcionar:
     ```
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
