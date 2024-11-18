@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        Gerenciar Funcionários
+        Estoque
     </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="icon" type="image/x-icon" href="imagens/logofav.ico">
@@ -86,8 +86,7 @@
         cursor: pointer;
         font-size: 18px;
         font-weight: bold;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-
+        transition: background-color 0.3s ease, transform 0.3s ease;    
     }
 
     .logoff:hover {
@@ -109,9 +108,14 @@
 
         <h1 id="h1-site">Doação Vital</h1>
         <br>
-        <form action="/sairConta" method="get" onsubmit="return confirm('Tem certeza que deseja sair da conta?')">
-            <button type="submit" class="logoff">Sair da conta</button>
-        </form>
+        <nav class="navbar">
+            <a href="/solicitacao">Solicitações</a>
+            <a href="/emoProx">Hemocentros</a>
+            <a href="/suporte">Suporte</a>
+            <a href="/contaUsuario">Conta</a>
+            <a href="/estoque">Estoque</a>
+        </nav>
+        <br>
     </header>
     <h1>Lista Funcionarios</h1>
     <div>
