@@ -73,17 +73,63 @@
         font-style: normal;
     }
 
-    .form-login label {
-            font-weight: bold;
-        }
-
-        .form-login input {
-            margin-bottom: 15px;
+    .form-login {
+            background-color: white;
+            max-width: 750px;
+            margin: 30px auto;
+            padding: 45px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .form-login .btn {
             font-size: 1.1rem;
-            padding: 10px;
+            padding: 12px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .form-login .btn:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-login .btn-danger {
+            background-color: rgb(189, 90, 57);
+            border: none;
+        }
+
+        .form-login .btn-danger:hover {
+            background-color: rgb(129, 62, 39);
+        }
+
+        .form-login .btn-warning {
+            background-color: #ffcc00;
+            border: none;
+        }
+
+        .form-login .btn-warning:hover {
+            background-color: #c9a205;
+        }
+
+
+        @media (max-width: 768px) {
+            header img {
+                height: 60px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .form-login {
+                padding: 20px;
+            }
+
+            .form-login .btn {
+                font-size: 1rem;
+                padding: 10px;
+            }
         }
 
     footer {
@@ -119,20 +165,14 @@
     <br>
     <h1 id="h1-conta">Conta</h1>
     <br>
-    <form action="/deletarUsuario" method="POST" class="form-login" onsubmit="return confirm('Tem certeza que deseja deletar a conta?')">
-        <button type="submit" class="btn btn-danger btn-block mt-3">Deletar Conta</button>
-    </form>
-    <form action="/sairConta" method="get" class="form-login" onsubmit="return confirm('Tem certeza que deseja sair da conta?')">
-        <button type="submit" class="btn btn-warning btn-block mt-3">Sair da conta</button>
-    </form>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <div class="form-login">
+        <form action="/deletarUsuario" method="POST" onsubmit="return confirm('Tem certeza que deseja deletar a conta?')">
+            <button type="submit" class="btn btn-danger btn-block mt-3">Deletar Conta</button>
+        </form>
+        <form action="/sairConta" method="get" onsubmit="return confirm('Tem certeza que deseja sair da conta?')">
+            <button type="submit" class="btn btn-warning btn-block mt-3">Sair da conta</button>
+        </form>
+    </div>
     <br>
     <br>
     <br>

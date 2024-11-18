@@ -43,6 +43,11 @@
         font-weight: 300;
         font-style: normal;
     }
+
+    #h1-1{
+        display: flex;
+        justify-content: center;
+    }
  
     .navbar {
         display: flex;
@@ -109,7 +114,10 @@
         </center>
     </main>
 
-    <h1>DOAR</h1>
+    <br>
+    <h1 id="h1-1">DOAR</h1>
+    <br>
+    
     <div class="blocoDoar">
         <main>
             <center>
@@ -128,8 +136,13 @@
             </center>
         </main>
     </div>
+
     <hr>
-    <h1>SOLICITAR</h1>
+
+    <br>
+    <h1 id="h1-1">SOLICITAR</h1> 
+    <br>
+
     <main>
         <center>
             <form action="/solcitacao/<%= cpf %>" method="post" class="form-login">
@@ -169,7 +182,7 @@
 
         function limitInputLength(input, maxLength) {
             if (input.value.length > maxLength) {
-                input.value = input.value.slice(0, maxLength); // Remove o excesso
+                input.value = input.value.slice(0, maxLength);
             }
         }
 
@@ -180,6 +193,7 @@
     <footer>
         © 2024 Doação Vital | <a href="https://site.fatecfranca.edu.br/">Powered by Fatec Franca</a>
     </footer>
+    <br>
 </body>
 
 </html>
