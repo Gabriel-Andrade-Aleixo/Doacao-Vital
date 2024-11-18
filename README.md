@@ -5,6 +5,7 @@
 Certifique-se de ter instalado os seguintes componentes em sua máquina:
 - [Node.js](https://nodejs.org/)
 - [MySQL](https://www.mysql.com/)
+- [MySQL WorkBench](https://www.mysql.com/)
 
 ## Instalação
 
@@ -51,31 +52,30 @@ Siga os passos abaixo para instalar e rodar o projeto.
 
 
 
-3. Caso o npm start  nao esteja funcionando siga este mini tutorial:
+3. Caso o npm start nao esteja funcionando este mini tutorial pode resolver:
    - Pesquise por "PowerShell" no menu Iniciar, clique com o botão direito em "Windows PowerShell" e selecione *Executar como administrador*.
 
-   -  Execute o comando abaixo para verificar qual é a política de execução atual:
-   powershell
-   Get-ExecutionPolicy <br>
+   - Execute o comando abaixo para verificar qual é a política de execução atual:
+   ```cmd
+   Get-ExecutionPolicy
+   ```
    Se o resultado for algo como Restricted, isso significa que nenhum script pode ser executado.
-
-   -  Para permitir a execução de scripts assinados ou todos os scripts, você pode executar o seguinte comando:
    
    - Para permitir a execução de *scripts assinados* (uma opção mais segura):
-     powershell
-     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-     
+   ```cmd
+   Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+   ```
    - Se preferir permitir *todos os scripts* (menos seguro), use:
-     powershell
-     Set-ExecutionPolicy Unrestricted -Scope CurrentUser
-     
-   -  Quando solicitado, pressione *Y* para confirmar a alteração.
+   ```cmd
+   Set-ExecutionPolicy Unrestricted -Scope CurrentUser
+   ```
+   - Quando solicitado, pressione *S* ou *Y* depois *Enter* para confirmar a alteração.
    
    - Feche a janela do PowerShell e abra-a novamente como *Administrador* para garantir que a alteração seja aplicada.
 
    - Agora, você deve conseguir rodar o comando npm install express ou qualquer outro comando npm sem problemas de permissão.
 
-4. Depois de tudo isso adicione o codigo abaixo no seu package.json pra ter certeza de que tudo vai funcionar:
+5. Depois de tudo isso adicione o codigo abaixo no seu package.json pra ter certeza de que tudo vai funcionar:
     ```
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
