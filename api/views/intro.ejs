@@ -37,12 +37,6 @@
             color: rgb(237, 237, 209);
         }
 
-        h1{
-            font-family: "Roboto", serif;
-            font-weight: 300;
-            font-style: normal;
-        }
- 
         .navbar {
             display: flex;
             justify-content: center;
@@ -59,52 +53,47 @@
             color: #ffcccb;
         }
 
-        h1{
+        h1, h2, h3 {
             font-family: "Roboto", serif;
             font-weight: 300;
             font-style: normal;
+            color: rgb(40, 40, 40);
         }
 
-        h2 {
-            font-family: "Roboto", serif;
-            font-weight: 300;
-            font-style: normal;
-        }
-
-        h3 {
-            font-family: "Roboto", serif;
-            font-weight: 300;
-            font-style: normal;
+        .t1 {
+            display: flex;
+            justify-content: center;
         }
 
         body {
             background-color: rgb(237, 237, 209);
             margin: 0;
-            font-family: Arial, sans-serif;
-            height: 100vh;
             font-family: "Roboto", serif;
             font-weight: 100;
             font-style: normal;
         }
 
         .bd-imagens img {
-            width: 500px;
+            width: 100%;
+            max-width: 500px;
             height: 350px;
             border-radius: 15px;
             box-shadow: 10px 5px 5px rgba(165, 159, 159, 0.686);
             display: flex;
         }
 
-        .bg-body{
+        .bg-body {
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
         #galeria_img {
-            display: flex; 
-            justify-content: space-between; 
+            display: flex;
+            justify-content: space-between;
             list-style: none;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         footer {
@@ -123,7 +112,16 @@
             text-decoration: underline;
         }
 
-         
+        .intro-text {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        .container ul {
+            margin-top: 10px;
+        }
+
         @media (max-width: 768px) {
             header img {
                 height: 70px;
@@ -192,31 +190,50 @@
 
     <div class="bg-body">
         <main class="container">
-            <h1 >Introdução</h1>
-            <section>
-                <p>Nosso objetivo é aprimorar a administração dos hemocentros, contribuindo para um sistema de saúde mais eficiente e ágil.</p>
-                <h3>Benefícios</h3>
+            <br>
+                <h1>Bem-vindo ao Doação Vital</h1>
+            <hr>
+            <br>
+            <section class="intro-text">
+                <p>O <strong>Doação Vital</strong> é um projeto inovador que visa aprimorar a gestão dos hemocentros no Brasil, tornando o processo de doação de sangue mais ágil e eficiente. Nossa missão é criar um sistema de saúde mais rápido, acessível e bem organizado para salvar vidas. Através da tecnologia e da colaboração entre hemocentros e doadores, conseguimos otimizar os estoques de sangue e melhorar o atendimento.</p>
+                
+            <br>
+                <h2>Por que doar sangue?</h2>
+            <br>
+                <p>A doação de sangue é um ato simples, rápido e seguro que pode salvar inúmeras vidas. Hemocentros em todo o Brasil dependem da generosidade de doadores para manter seus estoques abastecidos, especialmente em períodos de alta demanda, como no caso de emergências e cirurgias.</p>
+                <p>Ao doar sangue, você contribui diretamente para salvar vidas de pessoas em situações de risco, como vítimas de acidentes, pessoas em tratamentos oncológicos e até mesmo para aqueles que necessitam de transplantes.</p>
+
+            <br>
+                <h3>Benefícios para quem doa</h3>
+            <br>
                 <ul>
-                    <li>Otimização de estoques de sangue e componentes</li>
-                    <li>Facilidade no agendamento e controle de doações</li>
-                    <li>Atendimento rápido e eficiente</li>
+                    <li>Redução do risco de doenças cardiovasculares</li>
+                    <li>Estimulação da produção de novas células sanguíneas</li>
+                    <li>Aumento do bem-estar e sensação de altruísmo</li>
                 </ul>
+
+            <br>
+                <h3>Como funciona nosso sistema?</h3>
+            <br>
+                <p>O <strong>Doação Vital</strong> visa integrar hemocentros, hospitais e a população de uma forma mais eficaz. Nossa plataforma oferece agendamento de doações, controle de estoque e rastreamento de sangue em tempo real, além de manter um canal direto de comunicação entre os doadores e os hemocentros.</p>
+                <p>Com o nosso sistema, você pode facilmente encontrar o hemocentro mais próximo, agendar sua doação e acompanhar o impacto que sua contribuição gera.</p>
             </section>
 
-            <h2>Galeria de Hemocentro</h2>
-            <p>Explore imagens das nossas ações, serviços e instalações</p>
+            <br>
+                <h2>Galeria de Hemocentros e Ações</h2>
+            <br>
+            <p>Confira abaixo algumas imagens que ilustram nossas ações e o trabalho dos hemocentros.</p>
             <section class="bd-imagens">
                 <ul id="galeria_img">
                     <li><img src="./imagens/doa_basquetefranca.jpeg" alt="Doação do Franca Basquete"></li>
                     <li><img src="./imagens/doa_exercito.jpg" alt="Ação do Exército"></li>
-                </ul>
-                <ul id="galeria_img">
                     <li><img src="./imagens/doa_geral.jpeg" alt="Pessoas Doando Sangue"></li>
                     <li><img src="./imagens/doa_enfermagem.jpg" alt="Equipe de Enfermagem"></li>
                 </ul>
             </section>
         </main>
     </div>
+
     <br>
     <hr>
     <footer>
