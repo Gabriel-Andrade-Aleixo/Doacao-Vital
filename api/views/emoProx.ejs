@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legal</title>
+    <title>Hemocentros</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="/estilos/login.css" />
@@ -36,16 +36,21 @@
         justify-content: flex-end;
     }
 
-    .navbar a {
-        color: white;
-        text-decoration: none;
-        margin: 0 15px;
-        font-size: 1.1rem;
-    }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1rem;
+        }
 
-    .navbar a:hover {
-        color: #ffcccb;
-    }
+        .navbar a:hover {
+            color: #ffcccb;
+        }
+
+        .navbar p {
+            max-width: 20px; 
+            max-height: 20px;
+        }
 
     h1{
         font-family: "Roboto", serif;
@@ -76,6 +81,20 @@
             text-decoration: underline;
         }
 
+    #image-container {
+        margin: 20px auto;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    #image-container img {
+        max-width: 80%;
+        max-height: 400px;
+        display: none;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
 </style>
 
 <body>
@@ -83,6 +102,7 @@
         <figure>
             <img id="logo" src="./imagens/Gota.png" alt="Logo Projeto do Hemocentro">
         </figure>
+
         <h1>Doação Vital</h1>
         
         <nav class="navbar">
@@ -90,21 +110,46 @@
             <a href="/emoProx">Hemocentros</a>
             <a href="/suporte">Suporte</a>
             <a href="/contaUsuario">Conta</a>
+            <a href="/">/Logoff</a>
         </nav>
     </header>
-    
-    <h1>Hemocentro Próximos de Franca:</h1>
+
+    <div id="image-container">
+        <img id="preview-image" src="" alt="Imagem do Hemocentro">
+    </div>
 
     <ul id="lista">
-        <li>Hemocentro de Ribeirão Preto - Ribeirão Preto, SP</li>
-        <li>Hemocentro de São Carlos - São Carlos, SP</li>
-        <li>Hemocentro de Barretos - Barretos, SP</li>
-        <li>Hemocentro de São João da Boa Vista - São João da Boa Vista, SP</li>
+        <li onclick="showImage('imagens/img_hemo_franca.png')" ondblclick="hideImage()">Hemocentro de Franca - Av. Dr. Hélio Palermo, 4181</li>
     </ul>
     <br>
+    <h1>Hemocentro Próximos de Franca:</h1>
     <br>
-    <br>
-    <br>
+
+    <ul id="lista">
+        <li onclick="showImage('imagens/img_hemo_rp.png')" ondblclick="hideImage()">Hemocentro de Ribeirão Preto - R. Ten. Catão Roxo, 2501</li>
+        <li onclick="showImage('imagens/img_hemo_barretos.png')" ondblclick="hideImage()">Hemocentro de Barretos - R. Antenor Duarte Viléla, 1331</li>
+        <li onclick="showImage('imagens/img_hemo_uberaba.png')" ondblclick="hideImage()">Hemocentro Regional de Uberaba - Av. Getúlio Guaritá, 250</li>
+        <li onclick="showImage('imagens/img_hemo_saojose.png')" ondblclick="hideImage()">Hemocentro de São José do Rio Preto - Av. Jamil Feres Kfouri, 80</li>
+    </ul>
+
+
+    <script>
+        function showImage(imageSrc) {
+            const img = document.getElementById("preview-image");
+            img.src = imageSrc;
+            img.style.display = "block";
+        }
+
+        function hideImage() {
+            const img = document.getElementById("preview-image");
+            img.style.display = "none";
+            img.src = "";
+        }
+
+        function navigateTo(route) {
+                window.location.href = route;
+            }
+    </script>
     <br>
     <hr>
     <footer>
