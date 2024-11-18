@@ -11,7 +11,8 @@ module.exports = {
     registroHEMO,
     registroHEMO2,
     listarHemocentro,
-    deletarHemocentro
+    deletarHemocentro,
+    listarEstoque
 };
 
 function listarUsuarios(req, res) {
@@ -229,3 +230,21 @@ function deletarHemocentro(req, res) {
         }
     })
 }
+
+function listarEstoque(req, res) {
+    console.log("Controller Listar Hemocentro...");
+    adminModels.listarESTQ(function (erro, result) {
+        if (erro) {
+            throw erro
+        }
+
+
+        else {
+            console.log("Estoques encontrados:", result);
+            res.render("frm_listEstoque.ejs", {
+                obj_estq: result
+            });
+        }
+    });
+}
+

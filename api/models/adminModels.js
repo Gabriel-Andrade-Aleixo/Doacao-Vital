@@ -8,7 +8,8 @@ module.exports = {
     deletarFunc,
     registroHEMO,
     listarHemo,
-    deletarHemocentro
+    deletarHemocentro,
+    listarESTQ
 };
 
 function listarUsuarios(callback) {
@@ -150,6 +151,24 @@ function deletarHemocentro(id_hemocentro, callback) {
         } else {
             console.log(`Hemocentro com id ${id_hemocentro} deletado.`);
             callback(null, result);
+        }
+    });
+}
+
+function listarESTQ(callback) {
+    const m_sql = `
+    SELECT 
+        tipo_sangue,
+        volume_deposito
+    FROM Estoque;
+`;
+    conexao.query(m_sql, (erro, result) => {
+        if (erro) {
+            console.error("Erro na consulta SQL:", erro);
+            callback(erro, null);
+        } else {
+            console.log("Estoque retornados do banco:", result);
+            callback(null, result); 
         }
     });
 }

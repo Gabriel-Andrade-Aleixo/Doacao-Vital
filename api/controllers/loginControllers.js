@@ -1,4 +1,5 @@
 const loginModels = require("../models/loginModels.js")
+const adminModels = require("../models/adminModels.js")
 
 module.exports = {
     login,
@@ -10,7 +11,8 @@ module.exports = {
     deletarUsuario,
     doarSG,
     solicitarSG,
-    sairConta
+    sairConta,
+    listarEstoque
 }
 
 function login(req, res) {
@@ -201,4 +203,21 @@ function solicitarSG(req, res) {
         }
     });
 
+}
+
+function listarEstoque(req, res) {
+    console.log("Controller Listar Hemocentro...");
+    adminModels.listarESTQ(function (erro, result) {
+        if (erro) {
+            throw erro
+        }
+
+
+        else {
+            console.log("Estoques encontrados:", result);
+            res.render("normal_listEstoque.ejs", {
+                obj_estq: result
+            });
+        }
+    });
 }
