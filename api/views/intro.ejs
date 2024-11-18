@@ -82,18 +82,23 @@
         }
 
         .bd-imagens img {
-            width: 640px;
-            height: 450px;
+            width: 500px;
+            height: 350px;
             border-radius: 15px;
             box-shadow: 10px 5px 5px rgba(165, 159, 159, 0.686);
             display: flex;
-            justify-content: space-between;
         }
 
         .bg-body{
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        #galeria_img {
+            display: flex; 
+            justify-content: space-between; 
+            list-style: none;
         }
 
         footer {
@@ -113,7 +118,7 @@
         }
 
          
-         @media (max-width: 768px) {
+        @media (max-width: 768px) {
             header img {
                 height: 70px;
             }
@@ -128,6 +133,10 @@
 
             .bd-imagens img {
                 max-width: 250px;
+                max-height: 200px;
+            }
+            #galeria_img {
+                list-style: none;
             }
         }
 
@@ -149,7 +158,12 @@
             }
 
             .bd-imagens img {
-                max-width: 200px;
+                max-width: 250px;
+                max-height: 200px;
+            }
+            
+            #galeria_img {
+                list-style: none;
             }
         }
     </style>
@@ -187,10 +201,14 @@
             <h2>Galeria de Hemocentro</h2>
             <p>Explore imagens das nossas ações, serviços e instalações</p>
             <section class="bd-imagens">
-                <img src="./imagens/doa_basquetefranca.jpeg" alt="Doação do Franca Basquete">
-                <img src="./imagens/doa_exercito.jpg" alt="Ação do Exército">
-                <img src="./imagens/doa_geral.jpeg" alt="Pessoas Doando Sangue">
-                <img src="./imagens/doa_enfermagem.jpg" alt="Equipe de Enfermagem">
+                <ul id="galeria_img">
+                    <li><img src="./imagens/doa_basquetefranca.jpeg" alt="Doação do Franca Basquete"></li>
+                    <li><img src="./imagens/doa_exercito.jpg" alt="Ação do Exército"></li>
+                </ul>
+                <ul id="galeria_img">
+                    <li><img src="./imagens/doa_geral.jpeg" alt="Pessoas Doando Sangue"></li>
+                    <li><img src="./imagens/doa_enfermagem.jpg" alt="Equipe de Enfermagem"></li>
+                </ul>
             </section>
         </main>
     </div>
