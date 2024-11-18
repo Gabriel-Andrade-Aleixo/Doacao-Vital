@@ -81,6 +81,31 @@
         header img {
             height: 90px;
         }
+        .logoff{
+        display: flex;
+        justify-content: center;
+        background-color: rgb(189, 90, 57);
+        color: white;
+        border: none;
+        padding: 12px;
+        width: 100%;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: bold;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+
+    }
+
+    .logoff:hover {
+        background-color: #f35c3e;
+        transform: translateY(-2px);
+    }
+
+    .logoff:active {
+        background-color: #d84315;
+        transform: translateY(2px);
+    }
     </style>
 </head>
 
@@ -92,7 +117,9 @@
 
         <h1 id="h1-site">Doação Vital</h1>
         <br>
-        
+        <form action="/sairConta" method="get" onsubmit="return confirm('Tem certeza que deseja sair da conta?')">
+            <button type="submit" class="logoff">Sair da conta</button>
+        </form>
     </header>
 
     <div class="container blocoLogin">
