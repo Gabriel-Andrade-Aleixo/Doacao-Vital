@@ -9,7 +9,9 @@ module.exports = {
     listarFuncionario,
     deletarFuncionario,
     registroHEMO,
-    registroHEMO2
+    registroHEMO2,
+    listarHemocentro,
+    deletarHemocentro
 };
 
 function listarUsuarios(req, res) {
@@ -195,4 +197,35 @@ function registroHEMO2(req, res) {
             });
         }
     );
+}
+
+function listarHemocentro(req, res) {
+    console.log("Controller Listar Hemocentro...");
+    adminModels.listarHemo(function (erro, result) {
+        if (erro) {
+            throw erro
+        }
+
+
+        else {
+            console.log("Usuarios encontrados:", result);
+            res.render("frm_listHemo.ejs", {
+                obj_hemo: result
+            });
+        }
+    });
+}
+
+function deletarHemocentro(req, res) {
+    const { id_hemocentro } = req.params;
+
+    adminModels.deletarHemocentro(id_hemocentro, (erro, resultado) => {
+        if (erro) {
+            console.error("Erro ao deletar o usuário:", erro);
+            return res.status(500).send("Erro ao deletar o usuário!");
+        }
+        else {
+            res.status(200).send("Usuario deletado!");
+        }
+    })
 }

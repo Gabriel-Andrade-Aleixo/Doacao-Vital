@@ -52,12 +52,18 @@ router.post('/solcitacao/:id', verificarAutenticacao, controllerLogin.solicitarS
 
 router.get('/listarUsuario', verificarAutenticacao, adminControllers.listarUsuarios);
 router.delete('/listarUsuario/:id_user', verificarAutenticacao, adminControllers.deletarUsuario);
+
 router.get('/listarFuncionario', verificarAutenticacao, adminControllers.listarFuncionario);
 router.delete('/listarFuncionario/:id_func', verificarAutenticacao, adminControllers.deletarFuncionario);
+
 router.get('/registrarFunc', verificarAutenticacao, adminControllers.registroPSW);
 router.post('/registrarFunc/registro', verificarAutenticacao, adminControllers.registroPSW2);
+
 router.get('/registrarHemo', verificarAutenticacao, adminControllers.registroHEMO);
 router.post('/registrarHemo/registro', verificarAutenticacao, adminControllers.registroHEMO2);
+
+router.get('/listarHemocentro', verificarAutenticacao, adminControllers.listarHemocentro);
+router.delete('/listarHemocentro/:id_hemocentro', verificarAutenticacao, adminControllers.deletarHemocentro);
 
 router.get('/suporte', controllerLogin.suporte);
 router.get('/emoProx', verificarAutenticacao, controllerLogin.hemocentro);

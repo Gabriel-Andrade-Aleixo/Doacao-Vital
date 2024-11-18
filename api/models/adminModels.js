@@ -6,7 +6,9 @@ module.exports = {
     registroFUN,
     listarFunc,
     deletarFunc,
-    registroHEMO
+    registroHEMO,
+    listarHemo,
+    deletarHemocentro
 };
 
 function listarUsuarios(callback) {
@@ -109,8 +111,45 @@ function registroHEMO(p_nome, p_tel, p_bairro, p_rua, p_num, p_cid, callback) {
         (nome_hemocentro, telefone_hemocentro, bairro_hemo, rua_hemo, numero_hemo, cidade_hemo) 
         VALUES ("${p_nome}", "${p_tel}", "${p_bairro}", "${p_rua}", "${p_num}", "${p_cid}")
     `;
-    
+
     console.log('Executando query SQL: ', insertSql);
 
     conexao.query(insertSql, callback);
+}
+
+function listarHemo(callback) {
+    const m_sql = `
+    SELECT 
+        id_hemocentro, 
+        nome_hemocentro, 
+        telefone_hemocentro, 
+        bairro_hemo, 
+        rua_hemo, 
+        numero_hemo, 
+        cidade_hemo
+    FROM Hemocentro;
+`;
+    conexao.query(m_sql, (erro, result) => {
+        if (erro) {
+            console.error("Erro na consulta SQL:", erro);
+            callback(erro, null);
+        } else {
+            console.log("Hemocentros retornados do banco:", result);
+            callback(null, result);
+        }
+    });
+}
+
+
+function deletarHemocentro(id_hemocentro, callback) {
+    const SQL = 'DELETE FROM Hemocentro WHERE id_hemocentro = ?';
+    conexao.query(SQL, [id_hemocentro], (err, result) => {
+        if (err) {
+            console.error("Erro ao deletar funcionário:", err);
+            callback(err, null);
+        } else {
+            console.log(`Hemocentro com id ${id_hemocentro} deletado.`);
+            callback(null, result);
+        }
+    });
 }
