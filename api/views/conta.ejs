@@ -43,10 +43,15 @@
         font-weight: 300;
         font-style: normal;
     }
+    
+    #h1-conta{
+        display: flex;
+        justify-content: center;
+    }
  
     .navbar {
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
     }
 
     .navbar a {
@@ -68,13 +73,25 @@
         font-style: normal;
     }
 
+    .form-login label {
+            font-weight: bold;
+        }
+
+        .form-login input {
+            margin-bottom: 15px;
+        }
+
+        .form-login .btn {
+            font-size: 1.1rem;
+            padding: 10px;
+        }
+
     footer {
     text-align: center;
     padding: 10px;
     font-size: 14px;
     color: #333;
-}
-
+    }
         footer a {
             text-decoration: none;
             color: rgb(189, 90, 57);
@@ -99,12 +116,13 @@
             <a href="/contaUsuario">Conta</a>
         </nav>
     </header>
-
-    <h1>Conta</h1>
-    <form action="/deletarUsuario" method="POST" onsubmit="return confirm('Tem certeza que deseja deletar a conta?')">
+    <br>
+    <h1 id="h1-conta">Conta</h1>
+    <br>
+    <form action="/deletarUsuario" method="POST" class="form-login" onsubmit="return confirm('Tem certeza que deseja deletar a conta?')">
         <button type="submit" class="btn btn-danger btn-block mt-3">Deletar Conta</button>
     </form>
-    <form action="/sairConta" method="get" onsubmit="return confirm('Tem certeza que deseja sair da conta?')">
+    <form action="/sairConta" method="get" class="form-login" onsubmit="return confirm('Tem certeza que deseja sair da conta?')">
         <button type="submit" class="btn btn-warning btn-block mt-3">Sair da conta</button>
     </form>
     <br>
