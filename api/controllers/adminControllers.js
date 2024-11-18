@@ -7,7 +7,9 @@ module.exports = {
     registroPSW,
     registroPSW2,
     listarFuncionario,
-    deletarFuncionario
+    deletarFuncionario,
+    registroHEMO,
+    registroHEMO2
 };
 
 function listarUsuarios(req, res) {
@@ -146,4 +148,51 @@ function deletarFuncionario(req, res) {
             res.status(200).send("Usuario deletado!");
         }
     })
+}
+
+function registroHEMO(req, res) {
+    console.log("Carregando Pagina de registro")
+    res.render('registroHemo.ejs', {
+        title: "Registro",
+        mensagem: "Cadastrar"
+    })
+}
+
+function registroHEMO2(req, res) {
+    console.log("\nController Validar Registro.....")
+    const n_nome = req.body.nome;
+    const n_tel = req.body.tel;
+    const n_bairro = req.body.bairro;
+    const n_rua = req.body.rua;
+    const n_num = req.body.num;
+    const n_cid = req.body.cid;
+
+    console.log("Usuário: " + n_nome)  
+    console.log("Telefone: " + n_tel)
+    console.log("Bairro: " + n_bairro)
+    console.log("Rua: " + n_rua)
+    console.log("Numero: " + n_num)
+    console.log("Cidade: " + n_cid)
+
+    adminModels.registroHEMO(
+        n_nome,
+        n_tel,
+        n_bairro,
+        n_rua,
+        n_num,
+        n_cid,
+
+        function (erro, result) {
+            if (erro) {
+                console.error("Erro ao registrar Hemocentro:", erro);
+                return res.status(500).send("Erro no servidor.");
+            }
+
+            console.log("Hemocentro registrado com sucesso!");
+            res.render("registroHemo.ejs", {
+                title: "Registro",
+                mensagem: "Registro concluído com sucesso.",
+            });
+        }
+    );
 }

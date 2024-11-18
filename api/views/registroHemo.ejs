@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/estilos/login.css" />
+    <link rel="icon" type="image/x-icon" href="imagens/logofav.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Tilt+Neon&display=swap"
+        rel="stylesheet">
+
+
+    <title>
+        RegistroFunc
+    </title>
+
+    <style>
+        header {
+            border: solid 1px black;
+            height: 15vh;
+            background-color: rgb(189, 90, 57);
+            font-family: "Roboto", serif;
+            font-weight: 100;
+            font-style: normal;
+        }
+
+        body {
+            background-color: rgb(237, 237, 209);
+            font-family: "Roboto", serif;
+            font-weight: 100;
+            font-style: normal;
+        }
+
+        h1 {
+            font-family: "Roboto", serif;
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        .blocoLogin {
+            margin-top: 20px;
+        }
+
+        .form-login {
+            width: 100%;
+            max-width: 500px;
+            padding: 15px;
+        }
+
+        #logo {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="row">
+            <div id="setecols" class="form-group col-md-7">
+                <figure>
+                    <img id="logo" src="./imagens/Gota.png" alt="Logo Projeto do Hemocentro">
+                </figure>
+            </div>
+
+            <div class="col-md-3">
+                <nav class="linkAlunos">
+                    <ul>
+                        <li><a href="/suporte">Suporte</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container blocoLogin">
+        <main>
+            <center>
+                <div class="erro">
+                    <div class="alert alert-warning">
+                        <%= mensagem %>
+                    </div>
+                </div>
+
+                <form action="/registrarHemo/registro" method="POST" class="form-login">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" class="form-control" name="nome" maxlength="70" required />
+
+                    <label for="cep">CEP:</label>
+                    <input type="text" id="cep" class="form-control" maxlength="9" onblur="buscarEndereco()" required />
+
+                    <label for="bairro">Bairro:</label>
+                    <input type="text" id="bairro" class="form-control" name="bairro" maxlength="100" required />
+
+                    <label for="rua">Rua:</label>
+                    <input type="text" id="rua" class="form-control" name="rua" maxlength="100" required />
+
+                    <label for="cid">Cidade:</label>
+                    <input type="text" id="cid" class="form-control" name="cid" maxlength="50" required />
+
+                    <label for="num">Número:</label>
+                    <input type="text" id="num" class="form-control" name="num" maxlength="4" required pattern="\d*"
+                        oninput="this.value = this.value.replace(/\D/g, '')" />
+
+                    <label for="tel">Telefone:</label>
+                    <input type="tel" id="tel" class="form-control" name="tel" maxlength="15" required
+                        pattern="\(\d{2}\)\s\d{5}-\d{4}" oninput="formatTelefone(this)" />
+
+                    <br><br>
+                    <input type="submit" value="Registrar" class="btn btn-primary btn-block">
+                </form>
+            </center>
+        </main>
+    </div>
+
+    <script>
+        function buscarEndereco() {
+            const cep = document.getElementById("cep").value.replace(/\D/g, '');
+            if (cep.length !== 8) {
+                alert("CEP inválido!");
+                return;
+            }
+
+            const url = `https://viacep.com.br/ws/${cep}/json/`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.erro) {
+                        alert("CEP não encontrado!");
+                    } else {
+                        document.getElementById("rua").value = data.logradouro;
+                        document.getElementById("bairro").value = data.bairro;
+                        document.getElementById("cid").value = data.localidade;
+                    }
+                })
+                .catch(error => {
+                    alert("Erro ao buscar o CEP!");
+                    console.error("Erro:", error);
+                });
+        }
+
+        function formatTelefone(input) {
+            let value = input.value.replace(/\D/g, '');
+            if (value.length <= 2) {
+                input.value = `(${value}`;
+            } else if (value.length <= 7) {
+                input.value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+            } else {
+                input.value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7, 11)}`;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

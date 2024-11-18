@@ -56,6 +56,8 @@ router.get('/listarFuncionario', verificarAutenticacao, adminControllers.listarF
 router.delete('/listarFuncionario/:id_func', verificarAutenticacao, adminControllers.deletarFuncionario);
 router.get('/registrarFunc', verificarAutenticacao, adminControllers.registroPSW);
 router.post('/registrarFunc/registro', verificarAutenticacao, adminControllers.registroPSW2);
+router.get('/registrarHemo', verificarAutenticacao, adminControllers.registroHEMO);
+router.post('/registrarHemo/registro', verificarAutenticacao, adminControllers.registroHEMO2);
 
 router.get('/suporte', controllerLogin.suporte);
 router.get('/emoProx', verificarAutenticacao, controllerLogin.hemocentro);

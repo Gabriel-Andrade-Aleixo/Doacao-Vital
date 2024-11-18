@@ -5,7 +5,8 @@ module.exports = {
     deletarUsuario,
     registroFUN,
     listarFunc,
-    deletarFunc
+    deletarFunc,
+    registroHEMO
 };
 
 function listarUsuarios(callback) {
@@ -100,4 +101,16 @@ function deletarFunc(id_func, callback) {
             callback(null, result);
         }
     });
+}
+
+function registroHEMO(p_nome, p_tel, p_bairro, p_rua, p_num, p_cid, callback) {
+    const insertSql = `
+        INSERT INTO Hemocentro
+        (nome_hemocentro, telefone_hemocentro, bairro_hemo, rua_hemo, numero_hemo, cidade_hemo) 
+        VALUES ("${p_nome}", "${p_tel}", "${p_bairro}", "${p_rua}", "${p_num}", "${p_cid}")
+    `;
+    
+    console.log('Executando query SQL: ', insertSql);
+
+    conexao.query(insertSql, callback);
 }
