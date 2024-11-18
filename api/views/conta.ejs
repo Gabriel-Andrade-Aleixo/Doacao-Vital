@@ -97,16 +97,15 @@
             <a href="/emoProx">Hemocentros</a>
             <a href="/suporte">Suporte</a>
             <a href="/contaUsuario">Conta</a>
-            <a href="/">/Logoff</a>
         </nav>
     </header>
 
     <h1>Conta</h1>
     <form action="/deletarUsuario" method="POST" onsubmit="return confirm('Tem certeza que deseja deletar a conta?')">
-        <button type="submit">Deletar Conta</button>
+        <button type="submit" class="btn btn-danger btn-block mt-3">Deletar Conta</button>
     </form>
     <form action="/sairConta" method="get" onsubmit="return confirm('Tem certeza que deseja sair da conta?')">
-        <button type="submit">Sair da conta</button>
+        <button type="submit" class="btn btn-warning btn-block mt-3">Sair da conta</button>
     </form>
     <br>
     <br>
