@@ -38,54 +38,11 @@ Siga os passos abaixo para instalar e rodar o projeto.
 - **`/api/models`**: Modelos de conexão com o banco de dados MySQL.
 - **`/api/views`**: Views EJS para renderização no navegador.
 
-## Executando o Projeto
-
-1. Inicie o servidor com o Nodemon:
-    ```bash
-    npm start
-    ```
-   
-2. Acesse a aplicação no navegador em [http://localhost:3000](http://localhost:3000).
-
-
-
-
-
-
-3. Caso o npm start nao esteja funcionando este mini tutorial pode resolver:
-   - Pesquise por "PowerShell" no menu Iniciar, clique com o botão direito em "Windows PowerShell" e selecione *Executar como administrador*.
-
-   - Execute o comando abaixo para verificar qual é a política de execução atual:
-   ```cmd
-   Get-ExecutionPolicy
-   ```
-   Se o resultado for algo como Restricted, isso significa que nenhum script pode ser executado.
-   
-   - Para permitir a execução de *scripts assinados* (uma opção mais segura):
-   ```cmd
-   Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-   ```
-   - Se preferir permitir *todos os scripts* (menos seguro), use:
-   ```cmd
-   Set-ExecutionPolicy Unrestricted -Scope CurrentUser
-   ```
-   - Quando solicitado, pressione *S* ou *Y* depois *Enter* para confirmar a alteração.
-   
-   - Feche a janela do PowerShell e abra-a novamente como *Administrador* para garantir que a alteração seja aplicada.
-
-   - Agora, você deve conseguir rodar o comando npm install express ou qualquer outro comando npm sem problemas de permissão.
-
-5. Depois de tudo isso adicione o codigo abaixo no seu package.json pra ter certeza de que tudo vai funcionar:
-    ```
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "nodemon node app.js"
-    },
-    ```
-
 ## Estrutura de Tabelas (SQL)
 
 Certifique-se de que o arquivo `doacaoVital.sql` contenha as tabelas necessárias para o projeto, como `Usuario`, entre outras, para o funcionamento correto das rotas de cadastro e login.
+
+Agora no MySql WorkBench execute todos os códigos contidos no arquivo `doacaoVital.sql`. Caso eles não funcionem tente executar eles nessa ordem abaixo
 
 - Criando o e Usando o Banco:
   ```sql
@@ -203,3 +160,42 @@ Assim estamos cadastrando o admininstrador para ele poder cadastrar os funcioná
   ```
 Por fim cadastramos a quantidade de sangue em estoque
 
+## Executando o Projeto
+
+1. Inicie o servidor com o Nodemon:
+    ```bash
+    npm start
+    ```
+   
+2. Acesse a aplicação no navegador em [http://localhost:3000](http://localhost:3000).
+
+3. Caso o npm start nao esteja funcionando este mini tutorial pode resolver:
+   - Pesquise por "PowerShell" no menu Iniciar, clique com o botão direito em "Windows PowerShell" e selecione *Executar como administrador*.
+
+   - Execute o comando abaixo para verificar qual é a política de execução atual:
+   ```cmd
+   Get-ExecutionPolicy
+   ```
+   Se o resultado for algo como Restricted, isso significa que nenhum script pode ser executado.
+   
+   - Para permitir a execução de *scripts assinados* (uma opção mais segura):
+   ```cmd
+   Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+   ```
+   - Se preferir permitir *todos os scripts* (menos seguro), use:
+   ```cmd
+   Set-ExecutionPolicy Unrestricted -Scope CurrentUser
+   ```
+   - Quando solicitado, pressione *S* ou *Y* depois *Enter* para confirmar a alteração.
+   
+   - Feche a janela do PowerShell e abra-a novamente como *Administrador* para garantir que a alteração seja aplicada.
+
+   - Agora, você deve conseguir rodar o comando npm install express ou qualquer outro comando npm sem problemas de permissão.
+
+5. Depois de tudo isso adicione o codigo abaixo no seu package.json pra ter certeza de que tudo vai funcionar:
+    ```
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon node app.js"
+    },
+    ```
