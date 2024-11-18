@@ -37,7 +37,7 @@ id_solic INT PRIMARY KEY AUTO_INCREMENT,
 tipo_solic VARCHAR(12),
 qtda_sangue INT,
 id_usuario INT,
-FOREIGN KEY (id_usuario) REFERENCES Usuario(id_user)
+FOREIGN KEY (id_usuario) REFERENCES Usuario(id_user) ON DELETE CASCADE
 );
   
 CREATE TABLE Funcionarios (
