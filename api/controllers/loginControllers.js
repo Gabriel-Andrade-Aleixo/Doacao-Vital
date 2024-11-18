@@ -1,5 +1,4 @@
 const loginModels = require("../models/loginModels.js")
-const adminModels = require("../models/adminModels.js")
 
 module.exports = {
     login,
@@ -11,8 +10,7 @@ module.exports = {
     deletarUsuario,
     doarSG,
     solicitarSG,
-    sairConta,
-    listarEstoque
+    sairConta
 }
 
 function login(req, res) {
@@ -186,7 +184,7 @@ function doarSG(req, res) {
 }
 
 function solicitarSG(req, res) {
-    console.log("Rota Doar chegou");
+    console.log("Rota Solicitar chegou");
 
     const m_cpf = req.body.CPFsol;
     const m_quant = req.body.quantSG;
@@ -194,30 +192,26 @@ function solicitarSG(req, res) {
     loginModels.registrarSolicitacao(m_cpf, m_quant, (erro, resultados) => {
         if (erro) {
             console.error("Erro:", erro);
+
+            // Verificar se o erro é relacionado ao estoque insuficiente
+            if (erro.message === "Estoque insuficiente") {
+                return res.render('solicitacao.ejs', {
+                    cpf: req.session.usuario.cpf_user,
+                    mensagem: "Estoque insuficiente para a solicitação."
+                });
+            }
+
+            return res.render('solicitacao.ejs', {
+                cpf: req.session.usuario.cpf_user,
+                mensagem: "Erro ao registrar a solicitação"
+            });
         } else {
             console.log("Solicitação registrada com sucesso:", resultados);
             res.render('solicitacao.ejs', {
                 cpf: req.session.usuario.cpf_user,
-                mensagem: "Solicitado com sucesso"
-            })
-        }
-    });
-
-}
-
-function listarEstoque(req, res) {
-    console.log("Controller Listar Hemocentro...");
-    adminModels.listarESTQ(function (erro, result) {
-        if (erro) {
-            throw erro
-        }
-
-
-        else {
-            console.log("Estoques encontrados:", result);
-            res.render("normal_listEstoque.ejs", {
-                obj_estq: result
+                mensagem: "Solicitação registrada com sucesso"
             });
         }
     });
 }
+

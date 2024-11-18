@@ -110,6 +110,7 @@ function registrarDoacao(cpf, volume, callback) {
 }
 
 function registrarSolicitacao(cpf, volume, callback) {
+    // 1. Consultar o tipo de sangue do usuário
     const subQuery = `
         SELECT Usuario.id_user, Tipo_sangue.descricao 
         FROM Usuario
@@ -132,33 +133,54 @@ function registrarSolicitacao(cpf, volume, callback) {
         const { id_user, descricao: tipoSangue } = resultadosSubQuery[0];
         console.log(`Usuário encontrado: ID=${id_user}, Tipo Sanguíneo=${tipoSangue}`);
 
-        const updateQuery = `
-            UPDATE Estoque 
-            SET volume_deposito = volume_deposito - ?
+        // 2. Verificar se o estoque tem sangue suficiente
+        const estoqueQuery = `
+            SELECT volume_deposito
+            FROM Estoque
             WHERE tipo_sangue = ?`;
 
-        console.log(`Atualizando estoque para tipo sanguíneo: ${tipoSangue} com volume: ${volume}`);
-        conexao.query(updateQuery, [volume, tipoSangue], (erro, resultadosUpdate) => {
+        console.log(`Verificando estoque para tipo sanguíneo: ${tipoSangue}`);
+        conexao.query(estoqueQuery, [tipoSangue], (erro, resultadosEstoque) => {
             if (erro) {
-                console.error("Erro ao atualizar o estoque:", erro);
+                console.error("Erro ao verificar estoque:", erro);
                 return callback(erro, null);
             }
 
-            console.log("Estoque atualizado com sucesso:", resultadosUpdate);
+            if (resultadosEstoque.length === 0 || resultadosEstoque[0].volume_deposito < volume) {
+                console.error("Estoque insuficiente para o tipo sanguíneo:", tipoSangue);
+                return callback(new Error("Estoque insuficiente"), null);
+            }
 
-            const insertQuery = `
-                INSERT INTO Solic_sangue (tipo_solic, qtda_sangue, id_usuario)
-                VALUES (?, ?, ?)`;
+            // 3. Atualizar o estoque, subtraindo a quantidade solicitada
+            const updateQuery = `
+                UPDATE Estoque 
+                SET volume_deposito = volume_deposito - ?
+                WHERE tipo_sangue = ?`;
 
-            console.log(`Registrando solicitação: Tipo=${tipoSangue}, Volume=${volume}, ID Usuário=${id_user}`);
-            conexao.query(insertQuery, [tipoSangue, volume, id_user], (erro, resultadosInsert) => {
+            console.log(`Atualizando estoque para tipo sanguíneo: ${tipoSangue} com volume: ${volume}`);
+            conexao.query(updateQuery, [volume, tipoSangue], (erro, resultadosUpdate) => {
                 if (erro) {
-                    console.error("Erro ao registrar a solicitação:", erro);
+                    console.error("Erro ao atualizar o estoque:", erro);
                     return callback(erro, null);
                 }
 
-                console.log("Solicitação registrada com sucesso:", resultadosInsert);
-                callback(null, resultadosInsert);
+                console.log("Estoque atualizado com sucesso:", resultadosUpdate);
+
+                // 4. Registrar a solicitação de sangue
+                const insertQuery = `
+                    INSERT INTO Solic_sangue (tipo_solic, qtda_sangue, id_usuario)
+                    VALUES (?, ?, ?)`;
+
+                console.log(`Registrando solicitação: Tipo=${tipoSangue}, Volume=${volume}, ID Usuário=${id_user}`);
+                conexao.query(insertQuery, [tipoSangue, volume, id_user], (erro, resultadosInsert) => {
+                    if (erro) {
+                        console.error("Erro ao registrar a solicitação:", erro);
+                        return callback(erro, null);
+                    }
+
+                    console.log("Solicitação registrada com sucesso:", resultadosInsert);
+                    callback(null, resultadosInsert);  // Retorna o sucesso
+                });
             });
         });
     });
