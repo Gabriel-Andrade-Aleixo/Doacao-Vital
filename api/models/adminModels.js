@@ -158,8 +158,7 @@ function listarESTQ(callback) {
     SELECT 
         tipo_sangue,
         volume_deposito
-    FROM Estoque;
-`;
+    FROM Estoque;`;
     conexao.query(m_sql, (erro, result) => {
         if (erro) {
             console.error("Erro na consulta SQL:", erro);
