@@ -242,3 +242,20 @@ function alterarConta(req, res) {
         });
     });
 }
+
+function listarEstoque(req, res) {
+    console.log("Controller Listar Hemocentro...");
+    adminModels.listarESTQ(function (erro, result) {
+        if (erro) {
+            throw erro
+        }
+
+
+        else {
+            console.log("Estoques encontrados:", result);
+            res.render("normal_listEstoque.ejs", {
+                obj_estq: result
+            });
+        }
+    });
+}
