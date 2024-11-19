@@ -38,7 +38,7 @@ function deletarUsuario(id_user, callback) {
     });
 }
 
-function registroFUN(p_login, p_senha, p_email, p_sg, p_tel, p_bairro, p_rua, p_num, p_cid, p_cpf, p_cargo, p_nasc, p_hemo, callback) {
+function registroFUN(p_login, p_senha, p_email, p_tel, p_bairro, p_rua, p_num, p_cid, p_cpf, p_cargo, p_nasc, p_hemo, callback) {
 
     const checkCPFSql = `SELECT cpf_func FROM Funcionarios WHERE cpf_func = "${p_cpf}"`;
 
@@ -53,8 +53,8 @@ function registroFUN(p_login, p_senha, p_email, p_sg, p_tel, p_bairro, p_rua, p_
 
         const insertSql = `
           INSERT INTO Funcionarios
-          (nome_func, cpf_func, bairro_func, rua_func, numero_func, cidade_func, telefone_func, id_sangue, email_func, senha_func, cargo, data_nasc, id_hemocentro) 
-          VALUES ("${p_login}", "${p_cpf}", "${p_bairro}", "${p_rua}", "${p_num}", "${p_cid}", "${p_tel}", "${p_sg}", "${p_email}", "${p_senha}", "${p_cargo}", "${p_nasc}", "${p_hemo}")
+          (nome_func, cpf_func, bairro_func, rua_func, numero_func, cidade_func, telefone_func, email_func, senha_func, cargo, data_nasc, id_hemocentro) 
+          VALUES ("${p_login}", "${p_cpf}", "${p_bairro}", "${p_rua}", "${p_num}", "${p_cid}", "${p_tel}", "${p_email}", "${p_senha}", "${p_cargo}", "${p_nasc}", "${p_hemo}")
         `;
 
         conexao.query(insertSql, callback);

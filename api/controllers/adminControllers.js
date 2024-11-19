@@ -58,7 +58,6 @@ function registroPSW2(req, res) {
     console.log("\nController Validar Registro.....")
     const n_login = req.body.login;
     const n_email = req.body.email;
-    const n_sg = req.body.sg;
     const n_tel = req.body.tel;
     const n_bairro = req.body.bairro;
     const n_rua = req.body.rua;
@@ -72,7 +71,6 @@ function registroPSW2(req, res) {
 
     console.log("Usuário: " + n_login)
     console.log("Email: " + n_email)
-    console.log("Sangue: " + n_sg)
     console.log("Telefone: " + n_tel)
     console.log("Bairro: " + n_bairro)
     console.log("Rua: " + n_rua)
@@ -88,7 +86,6 @@ function registroPSW2(req, res) {
         n_login,
         n_senha,
         n_email,
-        n_sg,
         n_tel,
         n_bairro,
         n_rua,
