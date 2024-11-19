@@ -4,18 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        Estoque
-    </title>
+    <title>Estoque</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="icon" type="image/x-icon" href="imagens/logofav.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Tilt+Neon&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Tilt+Neon&display=swap"
         rel="stylesheet">
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <style>
     header {
         background-color: rgb(189, 90, 57);
@@ -45,6 +43,14 @@
         font-style: normal;
     }
 
+    .h1-site{
+        font-family: "Roboto", serif;
+        font-weight: 300;
+        font-style: normal;
+        display: flex;
+        justify-content: center;
+    }
+
     .navbar {
         display: flex;
         justify-content: center;
@@ -59,12 +65,6 @@
 
     .navbar a:hover {
         color: #ffcccb;
-    }
-
-    h1 {
-        font-family: "Roboto", serif;
-        font-weight: 300;
-        font-style: normal;
     }
 
     body {
@@ -86,7 +86,7 @@
         cursor: pointer;
         font-size: 18px;
         font-weight: bold;
-        transition: background-color 0.3s ease, transform 0.3s ease;    
+        transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
     .logoff:hover {
@@ -98,6 +98,22 @@
         background-color: #d84315;
         transform: translateY(2px);
     }
+
+    footer {
+        text-align: center;
+        padding: 10px;
+        font-size: 14px;
+        color: #333;
+    }
+
+        footer a {
+            text-decoration: none;
+            color: rgb(189, 90, 57);
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
 </style>
 
 <body>
@@ -117,16 +133,17 @@
         </nav>
         <br>
     </header>
-    <h1>Lista Estoque</h1>
+    <br>
+    <h1 class="h1-site">Lista Estoque</h1>
     <div>
         <fieldset>
-            <legend>Registros de Estoque</legend>
+            <legend class="h1-site">Registros de Estoque</legend>
             <table class="table">
                 <tr>
                     <th>Tipo</th>
                     <th>Quantidade</th>
                 </tr>
-                <% for (let i=0; i <obj_estq.length; i++) { %>
+                <% for (let i=0; i < obj_estq.length; i++) { %>
                     <tr>
                         <td>
                             <%= obj_estq[i].tipo_sangue %>
@@ -135,11 +152,67 @@
                             <%= obj_estq[i].volume_deposito %>
                         </td>
                     </tr>
-                    <% } %>
+                <% } %>
             </table>
         </fieldset>
     </div>
+    <br>
+    <hr>
+    <br>
+    <div>
+        <h2 class="h1-site">Gráfico de Estoque</h2>
+        <br>
+        <canvas id="estoqueChart" width="400" height="200"></canvas>
+    </div>
 
+    <script>
+        window.onload = function() {
+            let tiposSangue = [];
+            let volumesEstoque = [];
+
+            const tabela = document.querySelector("table");
+            const linhas = tabela.getElementsByTagName("tr");
+
+            for (let i = 1; i < linhas.length; i++) {
+                const colunas = linhas[i].getElementsByTagName("td");
+                if (colunas.length > 0) {
+                    const tipoSangue = colunas[0].innerText;
+                    const volumeEstoque = parseInt(colunas[1].innerText, 10);
+                    tiposSangue.push(tipoSangue);
+                    volumesEstoque.push(volumeEstoque);
+                }
+            }
+
+            const ctx = document.getElementById('estoqueChart').getContext('2d');
+            const estoqueChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: tiposSangue,
+                    datasets: [{
+                        label: 'Volume de Estoque',
+                        data: volumesEstoque,
+                        backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+
+<br>
+<hr>
+<footer>
+    © 2024 Doação Vital | <a href="https://site.fatecfranca.edu.br/">Powered by Fatec Franca</a>
+</footer>
 </body>
 
 </html>
