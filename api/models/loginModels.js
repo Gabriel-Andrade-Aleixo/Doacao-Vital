@@ -8,7 +8,8 @@ module.exports = {
     registrarDoacao,
     getUsuarioByCPF,
     atualizarUsuario,
-    registrarSolicitacao
+    registrarSolicitacao,
+    listarESTQ
 }
 
 // function validarPSW(p_login, p_senha, callback) {
@@ -196,3 +197,20 @@ function atualizarUsuario(id, novoNome, novoEmail, novaSenha, callback) {
     conexao.query(query, [novoNome, novoEmail, novaSenha, id], callback);
 }
 
+function listarESTQ(callback) {
+    const m_sql = `
+    SELECT 
+        tipo_sangue,
+        volume_deposito
+    FROM Estoque;
+`;
+    conexao.query(m_sql, (erro, result) => {
+        if (erro) {
+            console.error("Erro na consulta SQL:", erro);
+            callback(erro, null);
+        } else {
+            console.log("Estoque retornados do banco:", result);
+            callback(null, result); 
+        }
+    });
+}
