@@ -43,7 +43,7 @@
         font-style: normal;
     }
 
-    .h1-site{
+    .h1-site {
         font-family: "Roboto", serif;
         font-weight: 300;
         font-style: normal;
@@ -72,6 +72,37 @@
         font-family: "Roboto", serif;
         font-weight: 100;
         font-style: normal;
+    }
+
+    table {
+        width: 80%;
+        margin: 0 auto;
+        border-collapse: collapse;
+        text-align: left;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: rgb(189, 90, 57);
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: rgb(242, 242, 242);
+    }
+
+    .chart-container {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    canvas {
+        width: 100% !important;
+        height: auto !important;
     }
 
     .logoff {
@@ -106,14 +137,14 @@
         color: #333;
     }
 
-        footer a {
-            text-decoration: none;
-            color: rgb(189, 90, 57);
-        }
+    footer a {
+        text-decoration: none;
+        color: rgb(189, 90, 57);
+    }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
+    footer a:hover {
+        text-decoration: underline;
+    }
 </style>
 
 <body>
@@ -133,11 +164,14 @@
         </nav>
         <br>
     </header>
+
     <br>
+
     <h1 class="h1-site">Lista Estoque</h1>
     <div>
         <fieldset>
             <legend class="h1-site">Registros de Estoque</legend>
+            <br>
             <table class="table">
                 <tr>
                     <th>Tipo</th>
@@ -156,10 +190,12 @@
             </table>
         </fieldset>
     </div>
+
     <br>
     <hr>
     <br>
-    <div>
+
+    <div class="chart-container">
         <h2 class="h1-site">Gráfico de Estoque</h2>
         <br>
         <canvas id="estoqueChart" width="400" height="200"></canvas>
@@ -208,11 +244,11 @@
         }
     </script>
 
-<br>
-<hr>
-<footer>
-    © 2024 Doação Vital | <a href="https://site.fatecfranca.edu.br/">Powered by Fatec Franca</a>
-</footer>
+    <br>
+    <hr>
+    <footer>
+        © 2024 Doação Vital | <a href="https://site.fatecfranca.edu.br/">Powered by Fatec Franca</a>
+    </footer>
 </body>
 
 </html>
