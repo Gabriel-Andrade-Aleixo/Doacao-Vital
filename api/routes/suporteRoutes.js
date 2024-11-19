@@ -19,7 +19,7 @@ router.post('/mensagem', (req, res) => {
             botResponse = 'A documentação está disponível em nosso site. Visite a seção de suporte para mais informações!';
             break;
         case 'tutoriais':
-            botResponse = 'Você pode encontrar tutoriais em nossa página de ajuda, com vídeos e guias passo a passo.';
+            botResponse = 'Você pode encontrar tutoriais em nosso canal no youtube, DoaçãoVital.';
             break;
         case 'suporte técnico':
             botResponse = 'Nosso suporte técnico está disponível pelo telefone e por e-mail. Qualquer dúvida, estamos aqui!';
@@ -28,7 +28,7 @@ router.post('/mensagem', (req, res) => {
             botResponse = 'Vá para a página de Solicitação para mais informações :)';
             break;
         case 'erro de login':
-            botResponse = 'Se estiver com problemas para fazer login, verifique suas credenciais ou entre em contato com o suporte.';
+            botResponse = 'Se estiver com problemas para fazer login, verifique suas credenciais ou entre em contato com um dos nossos funcionarios.';
             break;
         case 'outro':
             botResponse = 'Para outros problemas, entre em contato conosco diretamente. Estamos aqui para ajudar!';
