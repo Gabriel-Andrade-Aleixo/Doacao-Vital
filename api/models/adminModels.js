@@ -71,14 +71,12 @@ function listarFunc(callback) {
             A.bairro_func, 
             A.rua_func, 
             A.numero_func, 
-            A.telefone_func, 
-            B.descricao AS tipo_sangue_descricao, 
+            A.telefone_func,  
             A.email_func, 
             A.cargo, 
             A.data_nasc, 
             C.nome_hemocentro 
         FROM Funcionarios A 
-        LEFT JOIN Tipo_sangue B ON A.id_sangue = B.id_sangue
         LEFT JOIN Hemocentro C ON A.id_hemocentro = C.id_hemocentro;
     `;
     conexao.query(m_sql, (erro, result) => {
