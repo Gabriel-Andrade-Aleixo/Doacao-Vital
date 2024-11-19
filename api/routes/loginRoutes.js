@@ -45,7 +45,8 @@ router.post('/validar', controllerLogin.validarPSW)
 router.get('/contaUsuario', verificarAutenticacao, controllerLogin.contaUsuario);
 router.post('/deletarUsuario', verificarAutenticacao, controllerLogin.deletarUsuario);
 router.get('/sairConta', verificarAutenticacao, controllerLogin.sairConta);
-router.get('/estoque', verificarAutenticacao, adminControllers.listarEstoque);
+router.get('/estoque', verificarAutenticacao, controllerLogin.listarEstoque);
+router.get('/estoqueAdmin', verificarAutenticacao, adminControllers.listarEstoque);
 router.post('/alterarConta', verificarAutenticacao, controllerLogin.alterarConta);
 
 
@@ -65,7 +66,8 @@ router.post('/registrarFunc/registro', verificarAutenticacao, adminControllers.r
 router.get('/registrarHemo', verificarAutenticacao, adminControllers.registroHEMO);
 router.post('/registrarHemo/registro', verificarAutenticacao, adminControllers.registroHEMO2);
 
-router.get('/listarEstoque', verificarAutenticacao, adminControllers.listarEstoque);
+router.get('/listarEstoque/admin', verificarAutenticacao, adminControllers.listarEstoque);
+router.get('/listarEstoque', verificarAutenticacao, controllerLogin.listarEstoque);
 
 router.get('/listarHemocentro', verificarAutenticacao, adminControllers.listarHemocentro);
 router.delete('/listarHemocentro/:id_hemocentro', verificarAutenticacao, adminControllers.deletarHemocentro);

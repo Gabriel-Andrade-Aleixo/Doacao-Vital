@@ -245,7 +245,7 @@ function alterarConta(req, res) {
 
 function listarEstoque(req, res) {
     console.log("Controller Listar Hemocentro...");
-    adminModels.listarESTQ(function (erro, result) {
+    loginModels.listarESTQ(function (erro, result) {
         if (erro) {
             throw erro
         }
