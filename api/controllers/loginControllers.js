@@ -12,6 +12,7 @@ module.exports = {
     doarSG,
     solicitarSG,
     sairConta,
+    alterarConta,
     listarEstoque
 }
 
@@ -219,5 +220,31 @@ function listarEstoque(req, res) {
                 obj_estq: result
             });
         }
+    });
+}
+
+function alterarConta(req, res) {
+    console.log("Alterando informações da conta...");
+    
+    const usuarioID = req.session.usuario.id_user;
+
+    const nNome = req.body.novoNome;
+    const nEmail = req.body.novoEmail;
+    const nSenha = req.body.novaSenha;
+
+    loginModels.atualizarUsuario(usuarioID, nNome, nEmail, nSenha, (erro) => {
+        if (erro) {
+            console.error("Erro ao atualizar informações:", erro);
+            return res.render("conta.ejs", {
+                title: "Conta",
+                mensagem: "Erro ao atualizar informações. Tente novamente."
+            });
+        }
+
+        console.log("Informações atualizadas com sucesso.");
+        res.render("conta.ejs", {
+            title: "Conta",
+            mensagem: "Informações atualizadas com sucesso."
+        });
     });
 }

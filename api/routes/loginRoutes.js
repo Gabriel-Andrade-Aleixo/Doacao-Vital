@@ -46,6 +46,8 @@ router.get('/contaUsuario', verificarAutenticacao, controllerLogin.contaUsuario)
 router.post('/deletarUsuario', verificarAutenticacao, controllerLogin.deletarUsuario);
 router.get('/sairConta', verificarAutenticacao, controllerLogin.sairConta);
 router.get('/estoque', verificarAutenticacao, adminControllers.listarEstoque);
+router.post('/alterarConta', verificarAutenticacao, controllerLogin.alterarConta);
+
 
 router.get('/solicitacao', verificarAutenticacao, controllerLogin.solicitacao);
 router.post('/solicitacao/:id', verificarAutenticacao, controllerLogin.doarSG);

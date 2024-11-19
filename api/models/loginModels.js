@@ -7,6 +7,7 @@ module.exports = {
     deletarUsuario,
     registrarDoacao,
     getUsuarioByCPF,
+    atualizarUsuario,
     registrarSolicitacao
 }
 
@@ -163,3 +164,13 @@ function registrarSolicitacao(cpf, volume, callback) {
         });
     });
 }
+
+function atualizarUsuario(id, novoNome, novoEmail, novaSenha, callback) {
+    const query = `
+        UPDATE Usuario 
+        SET nome_user = ?, email_user = ?, senha_user = ?
+        WHERE id_user = ?`;
+    console.log("Query SQL:", query);
+    conexao.query(query, [novoNome, novoEmail, novaSenha, id], callback);
+}
+
