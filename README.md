@@ -42,16 +42,7 @@ Digite ``` CMD  ``` e dê um ENTER
 
 Abrindo o programa CMD - Prompt de Comando:
 
-Procure a pasta do nosso projeto em seu computador
-
-atráves do comando:
-
-``` cd (nome da pasta) ``` - Esse pode avançar uma pasta
-``` cd ./  ``` - Volta uma pasta
-``` cd ../ ``` - Volta duas pastas atrás
-
-Assim que encontrar
-- Insira:
+Insira primeiramente:
 
 ```
 mysql -u root -p
@@ -75,7 +66,15 @@ exit
 # Sair do módulo do SQL
 ```
 
-E:
+Procure a pasta do nosso projeto em seu computador
+
+atráves do comando:
+
+``` cd (nome da pasta) ``` - Esse pode avançar uma pasta
+``` cd ./  ``` - Volta uma pasta
+``` cd ../ ``` - Volta duas pastas atrás
+
+Assim que encontrar:
 
 ```
 mysql -u root -p doacaovital < dados_doacaoVital.sql
