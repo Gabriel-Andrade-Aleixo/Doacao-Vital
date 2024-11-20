@@ -158,6 +158,37 @@ Assim estamos cadastrando o admininstrador para ele poder cadastrar os funcioná
   ```
 Por fim cadastramos a quantidade de sangue em estoque
 
+## Fazendo a conexão do vscode e o banco de dados.
+- na pasta config e com um arquivo conexão.js ja criado repita o processo abaixo.
+ ```js
+var mysql = require("mysql2");
+var database = "doacaoVital";
+
+var conexao = mysql.createConnection({
+    user: 'root',
+    password: '123456',   //<--- altere a senha presente para a senha atual do seu mysql workbench 
+    host: 'localhost',
+    port: 3306
+});
+
+conexao.connect((err) => {
+    if(err){
+        console.log("Erro ao conectar no Mysql...");
+        return;
+    }
+    conexao.query('USE ' + database);
+    console.log('\nConexão estabelecida com sucesso');
+
+});
+
+module.exports = conexao;
+
+ ```
+
+
+
+
+
 ## Executando o Projeto
 
 1. Inicie o servidor com o Nodemon:
