@@ -100,14 +100,12 @@ Agora no MySql WorkBench execute todos os códigos contidos no arquivo `doacaoVi
   numero_func CHAR(4),
   cidade_func VARCHAR(100),
   telefone_func VARCHAR(15),
-  id_sangue INT,
   email_func VARCHAR(40),
   senha_func VARCHAR(20),
   cargo VARCHAR(20),
   data_nasc DATE,
   id_hemocentro INT,
-  FOREIGN KEY (id_hemocentro) REFERENCES Hemocentro(id_hemocentro),
-  FOREIGN KEY (id_sangue) REFERENCES Tipo_sangue(id_sangue)
+  FOREIGN KEY (id_hemocentro) REFERENCES Hemocentro(id_hemocentro)
   );
     
   CREATE TABLE Estoque (
@@ -139,9 +137,9 @@ Casdtre um Hemocentro para podermos cadastrar um funcionário admininstrador
 
 - Cadastre os funcionários:
   ```sql
-  INSERT INTO Funcionarios (nome_func, cpf_func, bairro_func, rua_func, numero_func, cidade_func, telefone_func, id_sangue, email_func, senha_func, cargo, data_nasc, id_hemocentro) 
+  INSERT INTO Funcionarios (nome_func, cpf_func, bairro_func, rua_func, numero_func, cidade_func, telefone_func, email_func, senha_func, cargo, data_nasc, id_hemocentro) 
   VALUES 
-  ('ADMIN1', '123.456.789-00', 'BA', 'RA', '1234', 'CA', '(00) 12345-6789', 1, 'ADMON@admin.com', 'admin', 'ADMIN', '1212-12-12', 1);
+  ('ADMIN1', '123.456.789-00', 'BA', 'RA', '1234', 'CA', '(00) 12345-6789', 'ADMON@admin.com', 'admin', 'ADMIN', '1212-12-12', 1);
   ```
 Assim estamos cadastrando o admininstrador para ele poder cadastrar os funcionários
 
