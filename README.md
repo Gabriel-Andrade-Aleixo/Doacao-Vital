@@ -34,7 +34,36 @@ Siga os passos abaixo para instalar e rodar o projeto.
 
 Siga os passos abaixo para instalar BD e rodar o projeto.
 
+Em seu teclado:
 
+Botão Windows + R
+
+Abrindo o programa CMD - Prompt de Comando
+- Insira:
+
+```
+mysql -u root -p 
+```
+
+Insira a senha do seu Mysql
+- Assim que pronto:
+
+```
+show databases;
+
+# Mostrando os Bancos de Dados existentes
+```
+
+Dê um comando para importar o banco de dados:
+```
+exit
+```
+
+E:
+
+```
+mysql -u root -p doacaovital < dados_doacaoVital.sql
+```
 
 
 ## Estrutura do Projeto
