@@ -32,7 +32,7 @@ Siga os passos abaixo para instalar e rodar o projeto.
 
 ## Instalação Alternativa
 
-Siga os passos abaixo para instalar BD e rodar o projeto.
+Siga os passos abaixo para importar nosso Banco de Dados, para que possa rodar o projeto corretamente
 
 Em seu teclado:
 
