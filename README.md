@@ -36,9 +36,9 @@ Siga os passos abaixo para instalar BD e rodar o projeto.
 
 Em seu teclado:
 
-Aperte o Botão Windows
+Aperte o Botão WINDOWS
 
-Digite ``` CMD  ``` E DÊ UM ENTER
+Digite ``` CMD  ``` e dê um ENTER
 
 Abrindo o programa CMD - Prompt de Comando:
 
