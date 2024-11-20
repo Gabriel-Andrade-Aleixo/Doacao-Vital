@@ -30,6 +30,13 @@ Siga os passos abaixo para instalar e rodar o projeto.
     ```
 <hr>
 
+## Instalação Alternativa
+
+Siga os passos abaixo para instalar BD e rodar o projeto.
+
+
+
+
 ## Estrutura do Projeto
 
 - **`app.js`**: Arquivo principal da aplicação, configura o servidor e as rotas.
