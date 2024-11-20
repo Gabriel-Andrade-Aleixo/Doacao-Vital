@@ -43,7 +43,8 @@ Digite ``` CMD  ``` E DÊ UM ENTER
 Abrindo o programa CMD - Prompt de Comando:
 
 Procure a pasta do nosso projeto em seu computador
-Atráves do comando:
+
+atráves do comando:
 
 ``` cd (nome da pasta) ``` - Esse pode avançar uma pasta
 ``` cd ./  ``` - Volta uma pasta
