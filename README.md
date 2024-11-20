@@ -54,7 +54,9 @@ Assim que encontrar
 - Insira:
 
 ```
-mysql -u root -p 
+mysql -u root -p
+
+# Comando inicial
 ```
 
 Insira a senha do seu Mysql
@@ -63,12 +65,14 @@ Insira a senha do seu Mysql
 ```
 show databases;
 
-# Mostrando os Bancos de Dados existentes
+# Mostrando os bancos de dados existentes
 ```
 
 Dê um comando para importar o banco de dados:
 ```
 exit
+
+# Sair do módulo do SQL
 ```
 
 E:
